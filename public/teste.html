@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Reescrevi esta página no mesmo padrão do index.html:
+       CSS separado em css/style.css e sem estilos inline. -->
+  <title>Projeto Shingeki — Protótipo</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./assets/icon/favicon2.ico">
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#inicio" class="brand" data-screen-link="inicio" aria-label="Projeto Shingeki — Início">
+          <span class="brand-mark" aria-hidden="true">✦</span><span class="brand-name">Shingeki</span>
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <button type="button" class="nav-item" data-screen-link="inicio">Início</button>
+          <button type="button" class="nav-item" data-screen-link="sobre">Sobre</button>
+          <button type="button" class="nav-item" data-screen-link="valores">Valores</button>
+          <button type="button" class="nav-item" data-screen-link="cadastro">Cadastro</button>
+          <button type="button" class="nav-item" data-screen-link="login">Login</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="main-content">
+
+      <!-- TELA INICIAL -->
+      <section id="inicio" class="screen" aria-labelledby="inicio-titulo">
+        <div class="hero">
+          <!-- A imagem abaixo vinha do Canva (canva://); troque por uma imagem sua em assets/imgs. -->
+          <img class="hero-photo" loading="lazy" src="canva://MAHXib9Mjwc/1" alt="Castelo medieval iluminado à noite em uma paisagem escura e misteriosa">
+          <div class="inner">
+            <div class="hero-copy">
+              <p class="eyebrow">ALÉM DAS MURALHAS · SHINGEKI NO KYOJIN</p>
+              <h1 id="inicio-titulo" tabindex="-1" class="display">Todo titan tem sua história.</h1>
+              <div class="rule" aria-hidden="true"></div>
+              <p class="body-copy">Um espaço provisório para explorar narrativas de coragem, liberdade e descoberta. Entre e conheça a ideia por trás do Projeto Shingeki.</p>
+              <button type="button" class="action" data-screen-link="sobre">Explorar o projeto</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VALORES -->
+        <section id="valores" aria-labelledby="valores-titulo">
+          <div class="inner">
+            <p class="eyebrow">02 / PRINCÍPIOS</p>
+            <h2 id="valores-titulo" tabindex="-1" class="page-title small">Valores</h2>
+            <div class="rule" aria-hidden="true"></div>
+            <p class="muted">Três ideias para orientar esta apresentação. Os textos abaixo são provisórios e podem ser editados individualmente.</p>
+            <div class="values-grid">
+              <article class="value-card">
+                <span class="value-number">01 / VALOR</span>
+                <h3>Coragem</h3>
+                <p>Coragem é seguir em frente mesmo diante do desconhecido. Ela não elimina o medo: ajuda a reconhecer os riscos e a agir com responsabilidade quando permanecer imóvel já não é uma opção.</p>
+                <p class="placeholder-line">Texto provisório — substitua por sua reflexão sobre coragem.</p>
+              </article>
+              <article class="value-card">
+                <span class="value-number">02 / VALOR</span>
+                <h3>Liberdade</h3>
+                <p>Liberdade é imaginar caminhos além dos limites conhecidos. Também é perguntar quem define esses limites e compreender que a busca por novos horizontes envolve escolhas e consequências.</p>
+                <p class="placeholder-line">Texto provisório — substitua por sua reflexão sobre liberdade.</p>
+              </article>
+              <article class="value-card">
+                <span class="value-number">03 / VALOR</span>
+                <h3>Sacrifício</h3>
+                <p>Sacrifício convida a reconhecer o peso das escolhas feitas por um propósito. Antes de celebrá-lo, é preciso considerar quem assume os custos, quem se beneficia e o que poderia ter sido diferente.</p>
+                <p class="placeholder-line">Texto provisório — substitua por sua reflexão sobre sacrifício.</p>
+              </article>
+            </div>
+            <button type="button" class="action" data-screen-link="sobre">Conheça o projeto</button>
+          </div>
+        </section>
+
+        <!-- GALERIA -->
+        <section class="gallery-section" aria-labelledby="galeria-titulo">
+          <div class="inner">
+            <p class="eyebrow">03 / GALERIA</p>
+            <h2 id="galeria-titulo" class="page-title small">Galeria</h2>
+            <div class="rule" aria-hidden="true"></div>
+            <p class="muted">Seis espaços para compor sua história. Substitua cada imagem no editor e personalize os textos dos cards.</p>
+            <div class="gallery-grid">
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-1">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/10785268/pexels-photo-10785268.jpeg" alt="Árvores sem folhas em um campo enevoado ao crepúsculo"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-1">Além das muralhas</h3>
+                  <p>Um espaço para registrar o primeiro horizonte.</p>
+                </div>
+              </article>
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-2">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/28571821/pexels-photo-28571821.jpeg" alt="Torre antiga de pedra sob um céu dramático e nublado"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-2">A fortaleza</h3>
+                  <p>Uma imagem para apresentar lugares e memórias.</p>
+                </div>
+              </article>
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-3">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/20337722/pexels-photo-20337722.jpeg" alt="Trilha cercada por árvores escuras ao crepúsculo"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-3">Caminhos desconhecidos</h3>
+                  <p>Reserve este espaço para uma nova descoberta.</p>
+                </div>
+              </article>
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-4">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/34438636/pexels-photo-34438636.jpeg" alt="Ruínas antigas de pedra em preto e branco com sombras dramáticas"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-4">Vestígios do passado</h3>
+                  <p>Uma moldura para detalhes que contam histórias.</p>
+                </div>
+              </article>
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-5">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/12372778/pexels-photo-12372778.jpeg" alt="Nuvens escuras de tempestade sobre um campo verde"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-5">Antes da tempestade</h3>
+                  <p>Adicione uma cena de tensão ou transformação.</p>
+                </div>
+              </article>
+              <article class="gallery-card" tabindex="0" aria-labelledby="galeria-card-title-6">
+                <div class="gallery-frame">
+                  <img loading="lazy" src="https://images.pexels.com/photos/39567672/pexels-photo-39567672.jpeg" alt="Silhueta de um guerreiro segurando uma espada sob iluminação dramática"><span class="gallery-add">Adicionar foto</span>
+                </div>
+                <div class="gallery-body">
+                  <h3 id="galeria-card-title-6">O próximo horizonte</h3>
+                  <p>Deixe aqui a imagem do que vem depois.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- TELA SOBRE -->
+      <section id="sobre" class="screen content-screen" aria-labelledby="sobre-titulo" hidden>
+        <div class="inner">
+          <p class="eyebrow">01 / O PROJETO</p>
+          <h1 id="sobre-titulo" tabindex="-1" class="page-title">Sobre o projeto</h1>
+          <div class="rule" aria-hidden="true"></div>
+          <div class="about-layout">
+            <div class="about-stack">
+              <section class="about-block" aria-labelledby="sobre-universo-title">
+                <p class="eyebrow">UM MUNDO ALÉM DO CONHECIDO</p>
+                <h2 id="sobre-universo-title" class="section-title">Universo e atmosfera</h2>
+                <p class="body-copy">Este projeto propõe uma leitura autoral do universo e da atmosfera de Attack on Titan. Entre muralhas, sombras e horizontes incertos, a narrativa coloca em primeiro plano o medo do desconhecido e a vontade de descobrir o que existe além dele.</p>
+              </section>
+              <section class="about-block" aria-labelledby="sobre-exploracao-title">
+                <p class="eyebrow">CAMINHOS E FRONTEIRAS</p>
+                <h2 id="sobre-exploracao-title" class="section-title">Exploração e sobrevivência</h2>
+                <p class="body-copy">Explorar significa abandonar a segurança das respostas conhecidas. A sobrevivência exige atenção, colaboração e capacidade de seguir adiante mesmo quando cada passo pode mudar o destino de todos.</p>
+              </section>
+              <section class="about-block" aria-labelledby="sobre-conflitos-title">
+                <p class="eyebrow">O PESO DE DECIDIR</p>
+                <h2 id="sobre-conflitos-title" class="section-title">Conflitos e escolhas</h2>
+                <p class="body-copy">Os conflitos não acontecem apenas do lado de fora das muralhas. Ideais, lealdades e responsabilidades entram em choque, tornando cada escolha uma oportunidade de refletir sobre liberdade, consequências e aquilo que vale a pena proteger.</p>
+              </section>
+            </div>
+            <aside class="about-aside" aria-labelledby="sobre-placeholder-title">
+              <p class="eyebrow">ESPAÇO PARA EDIÇÃO</p>
+              <h2 id="sobre-placeholder-title" class="section-title">Substitua este texto</h2>
+              <p class="body-copy">Esta área é provisória. Use-a para apresentar uma nova ideia, acrescentar contexto ou escrever uma mensagem própria para o projeto.</p>
+            </aside>
+          </div>
+          <button type="button" class="action secondary" data-screen-link="inicio">Voltar ao início</button>
+        </div>
+      </section>
+
+      <!-- TELA CADASTRO -->
+      <section id="cadastro" class="screen content-screen" aria-labelledby="cadastro-titulo" hidden>
+        <div class="inner">
+          <div class="form-panel">
+            <p class="eyebrow">03 / DEMONSTRAÇÃO</p>
+            <h1 id="cadastro-titulo" tabindex="-1" class="page-title">Criar cadastro</h1>
+            <p class="form-note">Protótipo visual: este formulário não cria contas nem envia informações. Campos de senha não estão disponíveis.</p>
+            <form id="cadastro-form">
+              <div class="field">
+                <label for="cadastro-nome">Nome</label>
+                <input id="cadastro-nome" name="nome" type="text" autocomplete="off" required maxlength="80" placeholder="Seu nome">
+              </div>
+              <div class="field">
+                <label for="cadastro-email">E-mail</label>
+                <input id="cadastro-email" name="email" type="email" autocomplete="off" required maxlength="120" placeholder="voce@exemplo.com">
+              </div>
+              <button type="submit" class="action">Visualizar cadastro</button>
+              <p id="cadastro-result" class="form-result" role="status" aria-live="polite" hidden>Validação concluída. Esta é apenas uma demonstração: nenhum cadastro foi criado.</p>
+            </form>
+            <button type="button" class="text-link" data-screen-link="login">Já tenho uma conta — ver tela Login</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA LOGIN -->
+      <section id="login" class="screen content-screen" aria-labelledby="login-titulo" hidden>
+        <div class="inner">
+          <div class="form-panel">
+            <p class="eyebrow">04 / DEMONSTRAÇÃO</p>
+            <h1 id="login-titulo" tabindex="-1" class="page-title">Entrar</h1>
+            <p class="form-note">Prévia visual da tela de entrada. Não há autenticação, conta real nem campo de senha neste protótipo.</p>
+            <form id="login-form">
+              <div class="field">
+                <label for="login-email">E-mail</label>
+                <input id="login-email" name="email" type="email" autocomplete="off" required maxlength="120" placeholder="voce@exemplo.com">
+              </div>
+              <button type="submit" class="action">Visualizar entrada</button>
+              <p id="login-result" class="form-result" role="status" aria-live="polite" hidden>Validação concluída. Esta é apenas uma demonstração: nenhum acesso foi realizado.</p>
+            </form>
+            <button type="button" class="text-link" data-screen-link="cadastro">Ainda não tenho cadastro — ver tela Cadastro</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-brand">PROJETO SHINGEKI</span><span class="footer-note">Conteúdo provisório para edição</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- TROCA DE TELAS: mostra uma section e esconde as outras -->
+  <script>
+    let screens = [...document.querySelectorAll('main > .screen')];
+    let navButtons = [...document.querySelectorAll('.site-nav [data-screen-link]')];
+    let validScreens = new Set(screens.map(screen => screen.id));
+
+    function showScreen(id, focusTitle = false) {
+      // 'valores' pertence à tela inicial, então rola até ela em vez de trocar de tela
+      let target = id === 'valores' ? 'inicio' : validScreens.has(id) ? id : 'inicio';
+
+      screens.forEach(screen => { screen.hidden = screen.id !== target; });
+
+      // marca o botão da tela atual
+      navButtons.forEach(button => {
+        if (button.dataset.screenLink === id) button.setAttribute('aria-current', 'page');
+        else button.removeAttribute('aria-current');
+      });
+
+      // esconde mensagens de resultado ao trocar de tela
+      document.querySelectorAll('.form-result').forEach(result => { result.hidden = true; });
+
+      if (id === 'valores') {
+        document.getElementById('valores-titulo').scrollIntoView({ behavior: focusTitle ? 'smooth' : 'instant', block: 'start' });
+        if (focusTitle) document.getElementById('valores-titulo').focus({ preventScroll: true });
+      } else {
+        if (focusTitle) document.querySelector('#' + target + ' h1').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: focusTitle ? 'smooth' : 'instant' });
+      }
+    }
+
+    // todo elemento com data-screen-link troca de tela ao ser clicado
+    document.querySelectorAll('[data-screen-link]').forEach(control => {
+      control.addEventListener('click', event => {
+        event.preventDefault();
+        showScreen(control.dataset.screenLink, true);
+      });
+    });
+
+    // valida os formulários de demonstração
+    ['cadastro', 'login'].forEach(name => {
+      document.getElementById(name + '-form').addEventListener('submit', event => {
+        event.preventDefault();
+        if (event.currentTarget.reportValidity()) document.getElementById(name + '-result').hidden = false;
+      });
+    });
+
+    showScreen('inicio');
+  </script>
+</body>
+
+</html>
