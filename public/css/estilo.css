@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family:  Calibri, 'Trebuchet MS', sans-serif   ;
   background-color: black;
 }
 
@@ -21,16 +21,20 @@ body {
   margin: auto;
 }
 
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #b45a4d;
-}
-
 .header .container {
+  height: var(--tamanho-header);
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
+
+.banner .inicio .container{
+  display: flex;
+  width: 500px;
+  margin: auto;
+  background-color: #811010;
+}
+
 
 .header a {
   text-decoration: none;
@@ -66,12 +70,54 @@ body {
 /* BANNER */
 
 .banner {
+  display: flex;
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/Attack\ on\ Titan.jpg');
+  /* Overlay escuro sobre a imagem para deixar o banner um pouco mais escuro */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../assets/imgs/Attack\ on\ Titan.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   width: 100%;  
   height: 600px; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   background-size: cover;
+}
+
+.banner .text{
+  display: flex;
+  width: 1000px;
+  height:550px;
+  margin: 100px;
+  flex-direction: column;
+  align-items: center;
+  /* Centraliza os textos (h1, h2, h3) dentro da home */
+  text-align: center;
+  border: 1px solid #65715B;
+  border-radius: 15px;
+  background-color: #811010 linear-grandient() ;
+}
+.text h2{
+ max-width: 70%;
+
+}
+.text button{
+  display: flex;
+  height: 60px;
+  width: 200px;
+  color: #D8D0BE;
+  flex-direction: row;
+  /* Centraliza o texto do botão dentro do próprio botão */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #8E302F;
+  border-radius: 15px;
+  background-color: #8E302F;
+  font-size: 17px;
 }
 
 .banner .container {
@@ -108,9 +154,11 @@ body {
 
 .social .container .boxes {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  padding: 30px 0;
+  padding: 300px ;
+
 }
 
 .social p {

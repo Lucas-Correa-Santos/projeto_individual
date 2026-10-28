@@ -3,6 +3,8 @@
 ## Visão geral
 
 Meu projeto será um site pessoal sobre Shingeki no Kyojin, abordando como o anime me marcou, influenciou meus valores e contribuiu para meu crescimento pessoal. O público-alvo são fãs da obra, pessoas interessadas em conhecer novos animes e visitantes que desejam conhecer mais sobre mim. O site busca despertar o interesse por meio de reflexões, experiências pessoais e mensagens transmitidas pela história.
+Toda e qualquer alteração salve no caderno de prompts seguindos o modelo aplicado no documento.
+Coloque o que eu mandei como pergunta e sua resposta
 
 ## Tecnologias
 
@@ -35,6 +37,24 @@ Os dados que o usuario inserir vão passar por esse fluxo front-end - routes - c
 - Sempre que você fazer uma input faça o nome dessa variavel com Snake Case (snake_case), seguindo sempre esse padrão
 Exemplo: ipt_nome_variavel
 - Coloque nomes que façam sentido com a informação daquela variavel
+- As principais cores utilizadas no site vão ser:
+
+Grafite profundo
+#17191D · Fundo principal
+
+#811010 · para casos especificos de vermelho mais forte
+
+Aço escuro
+#292E35 · Cartões, menus e painéis
+
+Papiro
+#D8D0BE · Títulos e textos de destaque
+
+Vermelho de batalha
+#8E302F · Botões e detalhes importantes
+
+Verde-oliva
+#65715B · Etiquetas e detalhes secundários
 
 ## . Como escrever uma boa descrição
 
