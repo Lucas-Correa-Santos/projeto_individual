@@ -19,7 +19,7 @@
     <!--Header-->
     <div class="header">
         <div class="container">
-            <img src="./assets/imgs/logo.principal.png" class="titulo" alt="Logo Além das Muralhas">
+            <img src="./assets/imgs/Além_das_Muralhas_logo.png" class="titulo" alt="Logo Além das Muralhas">
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
@@ -62,6 +62,7 @@
                         <input id="senha_input" type="password" placeholder="******">
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
+                    <span>Não tem conta? <a href="cadastro.html">Crie a sua</a></p>
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
@@ -96,10 +97,11 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
+            window.location.href = "./dashboard/dashboard.html";
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // finalizarAguardar();
+            // return false;
         }
         else {
             setInterval(sumirMensagem, 5000)
