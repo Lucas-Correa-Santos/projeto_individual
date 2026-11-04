@@ -40,7 +40,7 @@
     </div>
   </div>
   <!--header fim-->
-<div class="banner2">
+
   <div class="login">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
@@ -48,6 +48,9 @@
       </div>
     </div>
     <div class="container">
+      <div class="card card-cadastro">
+        <img src="./assets/imgs/img_tropa_exploracao.png" alt="">
+      </div>
       <div class="card card-cadastro">
         <h2>Bem-vindo, Titã!</h2>
         <div class="formulario">
@@ -70,7 +73,7 @@
             </select>
           </div>
           <div class="campo">
-            <span>Nome:</span>
+            <span>Username:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
           <div class="campo">
@@ -92,18 +95,10 @@
         </div>
 
         <div id="div_erros_login"></div>
+        <div id="msg_error"></div>
       </div>
     </div>
   </div>
-</div>
-
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023-2026</h4>
-    </div>
-  </div>
-  <!--footer fim-->
 </body>
 
 </html>
@@ -111,8 +106,7 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
+  // let listaEmpresasCadastradas = [];
   function cadastrar() {
     // aguardar();
 
@@ -122,8 +116,7 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var titaVar = ipt_tita.value;
 
     // Verificando se há algum campo em branco
     if (
@@ -131,7 +124,7 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      titaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -143,18 +136,47 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
+    
+    if (!emailVar.includes('@') && !emailVar.includes('.com')) {
+      cardErro.style.display = 'block';
+      mensagem_erro.innerHTML =
+      'Email deve incluir @ e .com'
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
     }
+    
+    if (senhaVar.length < 8) {
+      cardErro.style.display = 'block';
+      msg_error.innerHTML =
+      'Sua senha precisa ter no minimo 8 caracteres'
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+    
+    if (nomeVar.length < 4  ) {
+      cardErro.style.display = 'block';
+      mensagem_erro.innerHTML =
+        'Seu username precisa ter pelo menos 4 caracteres'
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+    //   if (listaEmpresasCadastradas[i].codigo_ativacao == titaVar) {
+    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
+    //     console.log("Código de ativação válido.");
+    //     break;
+    //   } else {
+    //     cardErro.style.display = "block";
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -168,7 +190,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        titaServer: titaVar
       }),
     })
       .then(function (resposta) {
@@ -199,24 +221,24 @@
   }
 
   // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+  // function listar() {
+  //   fetch("/empresas/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((empresas) => {
+  //         empresas.forEach((empresa) => {
+  //           listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  //           console.log("listaEmpresasCadastradas")
+  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";

@@ -5,6 +5,9 @@ body {
   padding: 0;
   font-family:  Calibri, 'Trebuchet MS', sans-serif   ;
   background-color: black;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 :root {
@@ -17,13 +20,13 @@ body {
 
 .container {
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 .header .container {
   height: var(--tamanho-header);
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
@@ -74,7 +77,7 @@ body {
   height: var(--tamanho-banner);
   color: white;
   /* Overlay escuro sobre a imagem para deixar o banner um pouco mais escuro */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../assets/imgs/gif_inicio.gif');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/imgs/gif_inicio.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -235,18 +238,24 @@ body {
 }
 
 .card {
-  width: 700px;
+  width: 675px;
+  height: 100vh;
   background-color: #e5e5e5;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   color: palevioletred;
   flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
+  height: 100%;
+  /* clip-path: ; */
 }
 
+.card img{
+  display: flex;
+  width:  100vh;
+  height: 100%;
+  /* clip-path: ellipse(40% 30% at 50% 50%);; */
+}
 
 .card h2 {
   margin: 0;
@@ -427,7 +436,6 @@ input {
 .mensagem-alarme .informacao {
   width: 66%;
 }
-
 
 .alarme-sino {
   width: 48px;
