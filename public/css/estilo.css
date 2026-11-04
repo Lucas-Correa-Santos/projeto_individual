@@ -74,7 +74,7 @@ body {
   height: var(--tamanho-banner);
   color: white;
   /* Overlay escuro sobre a imagem para deixar o banner um pouco mais escuro */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../assets/imgs/Attack\ on\ Titan.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('../assets/imgs/gif_inicio.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -129,8 +129,9 @@ body {
   border-radius: 15px;
   background-color: #811010 linear-grandient() ;
 }
+
 .text h2{
- max-width: 70%;
+  max-width: 70%;
 
 }
 .text button{
@@ -203,7 +204,7 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #b45a4d;
+  background-color: #65715B;
   height: 100px;
   color: #fff;
   display: flex;

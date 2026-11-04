@@ -42,7 +42,7 @@
     </div>
     
     
-    <div class="banner">
+    <div class="banner2">
         <div class="login">
             <div class="alerta_erro">
                 <div class="card_erro" id="cardErro">
@@ -98,10 +98,10 @@
 
         if (emailVar == "" || senhaVar == "") {
             window.location.href = "./dashboard/dashboard.html";
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
-            // return false;
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
         }
         else {
             setInterval(sumirMensagem, 5000)
