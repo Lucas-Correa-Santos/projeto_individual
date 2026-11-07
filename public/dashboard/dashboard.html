@@ -119,7 +119,7 @@
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
         var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-        tituloAquario.innerHTML = "Últimas medidas do <span style='color: #e6005a'>" + descricao + "</span>"
+        tituloAquario.innerHTML = "Últimas medidas do <span style='color: var(--cor-vermelho-batalha)'>" + descricao + "</span>"
     }
 
     function exibirAquario(idAquario) {

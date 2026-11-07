@@ -10,7 +10,7 @@
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/imgs/tita_de_ataque.jpg" /> // icon da página
+  <link rel="icon" href="./assets/imgs/tita_de_ataque.jpg" /> 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -43,14 +43,13 @@
 
   <div class="login">
     <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
     </div>
+    
     <div class="container">
       <div class="card card-cadastro">
-        <img src="./assets/imgs/img_tropa_exploracao.png" alt="">
+        <img src="./assets/imgs/asas_para_liberdade.png" alt="">
       </div>
+      
       <div class="card card-cadastro">
         <h2>Bem-vindo, Titã!</h2>
         <div class="formulario">
@@ -96,8 +95,23 @@
 
         <div id="div_erros_login"></div>
         <div id="msg_error"></div>
+      <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+  </div>
       </div>
     </div>
+
+  <div class="footer">
+
+    <div class="container">
+
+      <h4>
+        Entre nessa aventura e descubra mais sobre o mundo de Attack On Titan
+      </h4>
+
+    </div>
+
   </div>
 </body>
 
@@ -106,12 +120,13 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  // let listaEmpresasCadastradas = [];
+  let usernameCadastrado = [];
   function cadastrar() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+    usernameCadastrado.push(nome_input.value);
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -136,8 +151,29 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    
-    if (!emailVar.includes('@') && !emailVar.includes('.com')) {
+    let caracteres = [
+    "!", "@", "#", "$", "%", "&", "*", "-", "_",
+    "+", "/", "|", ".", ",", ";", ":", "~", "^",
+    "[", "]", "{", "}", "(", ")"];
+    let temCaractereEspecial = false
+    for(let i = 0; i < caracteres.length; i++){
+      if(senhaVar.includes(caracteres[i])){
+        temCaractereEspecial = true;
+        break;
+      }
+    }
+    if(temCaractereEspecial) {
+  console.log("A senha tem caractere especial")
+  } else {
+      cardErro.style.display = 'block';
+      mensagem_erro.innerHTML =
+      'A senha precisa ter pelo menos um caractere especial!'
+      finalizarAguardar();
+      return false;
+      setInterval(sumirMensagem, 5000);
+    }
+
+    if (!emailVar.includes('@') || !emailVar.includes('.com')) {
       cardErro.style.display = 'block';
       mensagem_erro.innerHTML =
       'Email deve incluir @ e .com'
@@ -165,18 +201,7 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-    //   if (listaEmpresasCadastradas[i].codigo_ativacao == titaVar) {
-    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
-    //     console.log("Código de ativação válido.");
-    //     break;
-    //   } else {
-    //     cardErro.style.display = "block";
-    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     finalizarAguardar();
-    //   }
-    // }
+
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

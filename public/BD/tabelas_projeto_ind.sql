@@ -33,7 +33,10 @@ CREATE TABLE likes(
     FOREIGN KEY (fk_post) REFERENCES post(id)
 );
 
-CREATE TABLE quiz(
-
+CREATE TABLE tentativa_quiz(
+respostas_certas INT,
+tentativas INT,
+fk_usuario INT,
+FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 

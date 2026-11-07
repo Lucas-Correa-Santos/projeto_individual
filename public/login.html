@@ -50,10 +50,14 @@
         
         <div class="container">
         <div class="card card-cadastro">
-        <img src="./assets/imgs/img_tropa_exploracao.png" alt="">
+        <img src="./assets/imgs/asas_para_liberdade.png" alt="">
         </div>
             <div class="card card-cadastro">
-                <h2>Olá de volta!</h2>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2>Ola de volta!</h2>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
@@ -75,6 +79,17 @@
             </div>
         </div>
     
+</div>
+<div class="footer">
+
+    <div class="container">
+
+        <h4>
+        Entre nessa aventura e descubra mais sobre o mundo de Attack On Titan
+        </h4>
+
+    </div>
+
 </div>
 </body>
 
@@ -127,7 +142,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/mural.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -144,6 +159,8 @@
 
         }).catch(function (erro) {
             console.log(erro);
+            finalizarAguardar();
+
         })
 
         return false;
