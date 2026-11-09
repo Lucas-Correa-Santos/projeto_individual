@@ -111,81 +111,170 @@
             </div>
 
             <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
+    <button onclick="submeter()" id="btnSubmeter" class="btn-quiz">
+        Confirmar resposta
+    </button>
+
+    <button onclick="avancar()" id="btnProx" class="btn-quiz" disabled>
+        Próxima questão
+    </button>
+
+    <button onclick="tentarNovamente()" id="btnTentarNovamente" class="btn-quiz btn-reiniciar" disabled>
+        Tentar novamente
+    </button>
+</div>
 
         </div>
     </div>
     </div>
 
     </div>
-       
+    
     
         </div>
- 
+
 
 </body>
 
 <script>
     const listaDeQuestoes = [
 
-        {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
-            alternativaCorreta: "alternativaC"
-        },
+    {
+        pergunta: "Qual é o nome do protagonista principal de Attack on Titan?",
+        alternativaA: "Armin Arlert",
+        alternativaB: "Eren Yeager",
+        alternativaC: "Levi Ackerman",
+        alternativaD: "Jean Kirstein",
+        alternativaCorreta: "alternativaB"
+    },
 
-        {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
-            alternativaCorreta: "alternativaD"
-        },
+    {
+        pergunta: "Quantos Titãs Primordiais existem?",
+        alternativaA: "7",
+        alternativaB: "8",
+        alternativaC: "9",
+        alternativaD: "10",
+        alternativaCorreta: "alternativaC"
+    },
 
-        {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
-            alternativaCorreta: "alternativaD"
-        },
+    {
+        pergunta: "Quantos capítulos possui o mangá de Shingeki no Kyojin?",
+        alternativaA: "100",
+        alternativaB: "120",
+        alternativaC: "139",
+        alternativaD: "150",
+        alternativaCorreta: "alternativaC"
+    },
 
-        {
-            pergunta: "Qual o nome do Protagonista?",
-            alternativaA: "Eren",
-            alternativaB: "Mikasa",
-            alternativaC: "Armin",
-            alternativaD: "Levi",
-            alternativaCorreta: "alternativaA"
-        },
+    {
+        pergunta: "Qual personagem é conhecido por sua grande habilidade utilizando os equipamentos de movimentação?",
+        alternativaA: "Levi",
+        alternativaB: "Connie",
+        alternativaC: "Armin",
+        alternativaD: "Erwin",
+        alternativaCorreta: "alternativaA"
+    },
 
-        {
-            pergunta: "Quantos capitulos tem o Mánga?",
-            alternativaA: "30 capitulos",
-            alternativaB: "97 capitulos",
-            alternativaC: "195 capitulos",
-            alternativaD: "139 capitulos",
-            alternativaCorreta: "alternativaD"
-        },
+    {
+        pergunta: "Qual destes personagens faz parte do trio principal da história?",
+        alternativaA: "Reiner",
+        alternativaB: "Mikasa",
+        alternativaC: "Erwin",
+        alternativaD: "Hange",
+        alternativaCorreta: "alternativaB"
+    },
 
-        {
-            pergunta: "Quantos titas primordiais existem?",
-            alternativaA: "10",
-            alternativaB: "12",
-            alternativaC: "8",
-            alternativaD: "9",
-            alternativaCorreta: "alternativaD"
-        }
-    ]
+    {
+        pergunta: "Qual é o nome do amigo de infância de Eren e Mikasa?",
+        alternativaA: "Armin",
+        alternativaB: "Jean",
+        alternativaC: "Connie",
+        alternativaD: "Floch",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Qual destas opções representa um dos principais temas presentes em Shingeki no Kyojin?",
+        alternativaA: "Liberdade",
+        alternativaB: "Corrida de carros",
+        alternativaC: "Viagem espacial",
+        alternativaD: "Magia medieval",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Qual personagem é conhecida por sua determinação em proteger as pessoas importantes para ela?",
+        alternativaA: "Sasha",
+        alternativaB: "Annie",
+        alternativaC: "Mikasa",
+        alternativaD: "Historia",
+        alternativaCorreta: "alternativaC"
+    },
+
+    {
+        pergunta: "Qual destes é um dos Nove Titãs?",
+        alternativaA: "Titã Colossal",
+        alternativaB: "Titã Gigante Supremo",
+        alternativaC: "Titã Vermelho",
+        alternativaD: "Titã Guerreiro",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Qual personagem possui um grande interesse por estudar e compreender os Titãs?",
+        alternativaA: "Hange",
+        alternativaB: "Jean",
+        alternativaC: "Connie",
+        alternativaD: "Mikasa",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Qual é o sobrenome de Mikasa?",
+        alternativaA: "Yeager",
+        alternativaB: "Ackerman",
+        alternativaC: "Arlert",
+        alternativaD: "Braun",
+        alternativaCorreta: "alternativaB"
+    },
+
+    {
+        pergunta: "Qual personagem é conhecido por seu forte senso de liderança?",
+        alternativaA: "Erwin Smith",
+        alternativaB: "Sasha Blouse",
+        alternativaC: "Connie Springer",
+        alternativaD: "Marco Bott",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Em qual mídia Shingeki no Kyojin foi originalmente publicado?",
+        alternativaA: "Filme",
+        alternativaB: "Mangá",
+        alternativaC: "Jogo",
+        alternativaD: "Série de livros",
+        alternativaCorreta: "alternativaB"
+    },
+
+    {
+        pergunta: "Qual destes personagens faz parte da Tropa de Exploração em grande parte da história?",
+        alternativaA: "Levi",
+        alternativaB: "Gabi",
+        alternativaC: "Falco",
+        alternativaD: "Zeke",
+        alternativaCorreta: "alternativaA"
+    },
+
+    {
+        pergunta: "Qual palavra representa fortemente um dos desejos mais importantes presentes na obra?",
+        alternativaA: "Riqueza",
+        alternativaB: "Liberdade",
+        alternativaC: "Fama",
+        alternativaD: "Poder",
+        alternativaCorreta: "alternativaB"
+    }
+
+]
 
     // variáveis globais    
     let numeroDaQuestaoAtual = 0
@@ -205,14 +294,19 @@
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
+        document.getElementById('spanCertas').innerHTML = 0
+        document.getElementById('spanErradas').innerHTML = 0
 
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
 
+        btnSubmeter.style.display = "block"
+        btnProx.style.display = "block"
+        btnTentarNovamente.style.display = "none"
+
         btnSubmeter.disabled = false
         btnProx.disabled = true
-        // btnConcluir.disabled = true
         btnTentarNovamente.disabled = true
     }
 
@@ -272,13 +366,12 @@
         if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
         } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            alert("Atenção... a próxima é a ultima questão!")
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
         } else {
             finalizarJogo()
         }
         limparCoresBackgroundOpcoes()
-    }
+    }  
 
     function tentarNovamente() {
         // atualiza a página
@@ -336,39 +429,80 @@
         }
     }
 
-    function finalizarJogo() {
-        let textoParaMensagemFinal = null
-        let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+   function finalizarJogo() {
 
-        if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
-            classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-            classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
-            classComCoresParaMensagemFinal = "text-success-with-bg"
-        }
+    let textoParaMensagemFinal = ""
+    let classComCoresParaMensagemFinal = ""
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+    const porcentagemFinalDeAcertos =
+        pontuacaoFinal / quantidadeDeQuestoes
 
+    if (porcentagemFinalDeAcertos <= 0.3) {
 
-        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
-        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+        textoParaMensagemFinal =
+            "Ainda há muito para descobrir além das muralhas!"
 
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        classComCoresParaMensagemFinal =
+            "text-danger-with-bg"
 
-        btnProx.disabled = true
-        btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = false
+    } else if (porcentagemFinalDeAcertos < 0.7) {
 
+        textoParaMensagemFinal =
+            "Você conhece a obra, mas ainda pode explorar mais!"
+
+        classComCoresParaMensagemFinal =
+            "text-warning-with-bg"
+
+    } else if (porcentagemFinalDeAcertos < 1) {
+
+        textoParaMensagemFinal =
+            "Muito bem! Você realmente conhece Shingeki no Kyojin!"
+
+        classComCoresParaMensagemFinal =
+            "text-success-with-bg"
+
+    } else {
+
+        textoParaMensagemFinal =
+            "Perfeito! Você domina completamente o mundo de Shingeki!"
+
+        classComCoresParaMensagemFinal =
+            "text-success-with-bg"
     }
+
+    const porcentagem =
+        Math.round(porcentagemFinalDeAcertos * 100)
+
+    textoParaMensagemFinal +=
+        `<br>Você acertou ${certas} de ${quantidadeDeQuestoes} questões (${porcentagem}%).`
+
+    document.getElementById('msgFinal').innerHTML =
+        textoParaMensagemFinal
+
+    document.getElementById('msgFinal').className =
+        "width-fit-content " + classComCoresParaMensagemFinal
+
+    document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+    document.getElementById('infoQuestao').style.display = "none"
+
+    document.getElementById('perguntaDaQuestaoAtual').style.display = "none"
+
+    document.getElementById('infoAlternativas').style.display = "none"
+
+    document.getElementById('opcoes').style.display = "none"
+
+
+    btnSubmeter.style.display = "none"
+
+    btnProx.style.display = "none"
+
+    btnTentarNovamente.style.display = "block"
+
+    btnTentarNovamente.disabled = false
+
+}
+
 </script>
 
 </html>

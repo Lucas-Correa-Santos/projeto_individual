@@ -451,13 +451,6 @@ canvas {
   cursor: pointer;
 }
 
-
-.div-quiz{
-  min-width: 700px;
-  min-height: 600px;
-  place-items: center;
-}
-
 .flex-colunar {
     display: flex;
     flex-direction: column;
@@ -502,4 +495,175 @@ canvas {
 
 .text-new-gray {
     color: var(--new-gray);
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.div-quiz {
+    min-width: 700px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+/* Área principal */
+
+#pontuacaoEJogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* Botão de iniciar */
+
+#btnIniciarQuiz {
+    padding: 15px 35px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--cor-vermelho-batalha);
+    color: white;
+
+    transition: 0.3s;
+}
+
+#btnIniciarQuiz:hover {
+    transform: scale(1.05);
+}
+
+
+/* Pontuação */
+
+#pontuacao {
+    width: 100%;
+    max-width: 650px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background-color: var(--cor-aco-escuro);
+    color: white;
+}
+
+#pontuacaoDuranteJogo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 100%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* Área do jogo */
+
+#jogo {
+    width: 100%;
+    max-width: 650px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--cor-papiro);
+    box-sizing: border-box;
+}
+
+
+/* Número da questão */
+
+#infoQuestao {
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+
+/* Pergunta */
+
+#perguntaDaQuestaoAtual {
+    text-align: center;
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+
+/* Alternativas */
+
+#opcoes {
+    width: 100%;
+    align-items: stretch;
+}
+
+#opcoes span {
+    padding: 8px;
+    border: 1px solid var(--new-gray);
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+#opcoes span:hover {
+    transform: translateX(5px);
+}
+
+
+/* Labels das alternativas */
+
+.option {
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+
+/* Botões */
+
+#botoes {
+    width: 100%;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.btn-quiz {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: poi nter;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    gap: 10px;
+    background-color: var(--cor-vermelho-batalha);
+    color: white;
+}
+
+.btn-quiz:hover:not(:disabled) {
+    transform: scale(1.02);
+}
+
+.btn-quiz:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Botão de tentar novamente */
+
+.btn-reiniciar {
+    background-color: var(--secondary-brand-color);
 }
