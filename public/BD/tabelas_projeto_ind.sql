@@ -32,4 +32,10 @@ FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 SELECT * FROM quiz;
 
+CREATE TABLE avaliacao(
+	fk_usuario INT PRIMARY KEY,
+	nota INT NOT NULL,
+	
+);
+
 

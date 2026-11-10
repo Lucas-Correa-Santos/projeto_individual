@@ -34,21 +34,16 @@
                 <h3>Quiz Attack On Titan</h3>
             </div>
 
+            
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Avaliação do Anime</h3>
+                </a>
+            </div>
+            
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
                     <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./edicao-aviso.html">
-                    <h3>Edição de Post</h3>
                 </a>
             </div>
 
@@ -140,7 +135,7 @@
     const listaDeQuestoes = [
 
     {
-        pergunta: "Qual é o nome do protagonista principal de Attack on Titan?",
+        pergunta: "Qual é o nome do protagonista de Attack on Titan?",
         alternativaA: "Armin Arlert",
         alternativaB: "Eren Yeager",
         alternativaC: "Levi Ackerman",
@@ -160,9 +155,9 @@
     {
         pergunta: "Quantos capítulos possui o mangá de Shingeki no Kyojin?",
         alternativaA: "100",
-        alternativaB: "120",
+        alternativaB: "122",
         alternativaC: "139",
-        alternativaD: "150",
+        alternativaD: "154",
         alternativaCorreta: "alternativaC"
     },
 
@@ -521,8 +516,6 @@ fetch("/quiz/cadastrar", {
         "Content-Type": "application/json",
     },
         body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         pontoFinalServer: pontoFinalVar,
         respostascertasServer: respostascertasVar,
         respostaserradasServer: respostaserradasVar,
@@ -530,11 +523,7 @@ fetch("/quiz/cadastrar", {
     }),
 })
 
-}
-
-function cadastrar(){
-
-}    
+}   
 </script>
 
 </html>

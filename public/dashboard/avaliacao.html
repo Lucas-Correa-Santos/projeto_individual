@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/imgs/tita_de_ataque.jpg" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shingeki | Avaliação</title>
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<!-- <body onload="validarSessao(), atualizarFeed()" style="background-color: var(--cor-fundo);"> -->
+
+<body onload="atualizarFeed()" style="background-color: var(--cor-fundo);"></body>
+<div class="janela">
+
+
+    <div class="header-left">
+
+        <h1>Shingeki</h1>
+
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="cards.html">
+                <h3>Quiz Attack on Titan</h3>
+            </a>
+        </div>
+
+        <div class="btn-nav">
+            <h3>Avaliação do anime</h3>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./dashboard.html">
+                <h3>Gráficos</h3>
+            </a>
+        </div>
+
+
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+
+    </div>
+
+<div class="dash-right">
+
+    <div class="div-avaliacao">
+
+        <h1>Avalie o anime de Attack on Titan</h1>
+
+        <div class="form-avaliacao">
+
+            <div class="campo-avaliacao">
+                <label for="select_nota">
+                    De 1 a 5, qual nota você dá para Shingeki no Kyojin?
+                </label>
+
+                <select id="select_nota">
+                    <option disabled selected>Selecione uma nota</option>
+                    <option value="1">1 - Muito ruim</option>
+                    <option value="2">2 - Ruim</option>
+                    <option value="3">3 - Bom</option>
+                    <option value="4">4 - Muito bom</option>
+                    <option value="5">5 - Excelente</option>
+                </select>
+            </div>
+
+
+            <div class="campo-avaliacao">
+                <label for="select_marcou">
+                    O que mais marcou você em Shingeki no Kyojin?
+                </label>
+
+                <select id="select_marcou">
+                    <option disabled selected>Selecione uma opção</option>
+                    <option value="historia">História</option>
+                    <option value="personagens">Personagens</option>
+                    <option value="animacao">Animação</option>
+                    <option value="trilha_sonora">Trilha sonora</option>
+                    <option value="batalhas">Batalhas</option>
+                    <option value="misterios">Mistérios</option>
+                    <option value="reflexoes">Reflexões e mensagens</option>
+                </select>
+            </div>
+
+
+            <div class="campo-avaliacao">
+                <label for="select_tema">
+                    Qual tema de Shingeki no Kyojin mais chamou sua atenção?
+                </label>
+
+                <select id="select_tema">
+                    <option disabled selected>Selecione uma opção</option>
+                    <option value="liberdade">Liberdade</option>
+                    <option value="persistencia">Persistência</option>
+                    <option value="preconceito">Preconceito e intolerância</option>
+                    <option value="consequencias">Consequências das decisões</option>
+                    <option value="perspectivas">Diferentes perspectivas</option>
+                    <option value="relacoes">Relações entre as pessoas</option>
+                </select>
+            </div>
+
+
+            <div class="campo-avaliacao">
+                <label for="select_conhecia">
+                    Você já conhecia Shingeki no Kyojin?
+                </label>
+
+                <select id="select_conhecia">
+                    <option disabled selected>Selecione uma opção</option>
+                    <option value="sim_assisti">Sim, já assisti</option>
+                    <option value="assistindo">Estou assistindo atualmente</option>
+                    <option value="nao_assisti">Conheço, mas ainda não assisti</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="enviar()">Enviar Resposta</button>
+
+    </div>
+
+</div>
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
+    function enviar(){
+        let nota = select_nota.value;
+        let aspecto = select_marcou.value;
+        let tema = select_tema.value;
+        let conhecia = select_conhecia.value;
+
+        var notafinalVar = nota;
+        var aspectoVar = aspecto;
+        var temaVar = tema;
+        var conheciaVar = conhecia;
+        var userIDVar = sessionStorage.ID_USUARIO;
+
+        
+    console.log("Payload avaliacao:", {
+        notafinalServer: notafinalVar,
+        aspectoServer: aspectoVar,
+        temaServer: temaVar,
+        conheciaServer: conheciaVar,
+        userIDServer: userIDVar
+    });
+    if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.ID_USUARIO");
+
+fetch("/avaliacao/cadastrar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify({
+        notafinalServer: notafinalVar,
+        aspectoServer: aspectoVar,
+        temaServer: temaVar,
+        conheciaServer: conheciaVar,
+        userIDServer: userIDVar
+    }),
+})
+
+    }
+</script>
