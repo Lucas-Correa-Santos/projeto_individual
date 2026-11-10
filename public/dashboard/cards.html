@@ -21,7 +21,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="onloadEsconder(), validarSessao(),  atualizacaoPeriodica()">
+<body onload="onloadEsconder()">
     <div class="janela">
         <div class="header-left">
             <h1>Shingeki</h1>
@@ -65,14 +65,14 @@
 
         <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
             <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span >Quantidade de erros: <span id="spanErradas"></span></span>
             </div>
             <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                <span id="pontuacaoFinal">Pontuação Final:
                     <span id="spanPontuacaoFinal">***</span>
                 </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
+                <span id="msgFinal">***</span>
             </div>
         </div>
 
@@ -429,7 +429,7 @@
         }
     }
 
-   function finalizarJogo() {
+    function finalizarJogo() {
 
     let textoParaMensagemFinal = ""
     let classComCoresParaMensagemFinal = ""
@@ -501,8 +501,40 @@
 
     btnTentarNovamente.disabled = false
 
+    var pontoFinalVar = pontuacaoFinal;
+    var respostascertasVar = certas;
+    var respostaserradasVar = erradas;
+    var userIDVar = sessionStorage.ID_USUARIO;
+
+
+    console.log("Payload quiz:", {
+        pontoFinalServer: pontoFinalVar,
+        respostascertasServer: respostascertasVar,
+        respostaserradasServer: respostaserradasVar,
+        userIDServer: userIDVar
+    });
+    if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.ID_USUARIO");
+
+fetch("/quiz/cadastrar", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        pontoFinalServer: pontoFinalVar,
+        respostascertasServer: respostascertasVar,
+        respostaserradasServer: respostaserradasVar,
+        userIDServer: userIDVar
+    }),
+})
+
 }
 
+function cadastrar(){
+
+}    
 </script>
 
 </html>
