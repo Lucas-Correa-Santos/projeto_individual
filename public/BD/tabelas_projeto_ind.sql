@@ -25,7 +25,6 @@ CREATE TABLE quiz(
 fk_usuario INT PRIMARY KEY,
 respostas_certas INT NOT NULL,
 respostas_erradas INT NOT NULL,
-tentativas INT,
 pontuacao_final INT NOT NULL,
 dt_tentativa DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
@@ -35,7 +34,11 @@ SELECT * FROM quiz;
 CREATE TABLE avaliacao(
 	fk_usuario INT PRIMARY KEY,
 	nota INT NOT NULL,
-	
+	aspecto VARCHAR(30) NOT NULL,
+	tema VARCHAR(30) NOT NULL,
+	conhecia VARCHAR(30) NOT NULL,
+	dt_avaliacao DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
 
