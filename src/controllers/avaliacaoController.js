@@ -1,7 +1,7 @@
 var avaliacaoModel = require("../models/avaliacaoModel");
 
-function listar(req, res) {
-    avaliacaoModel.listar().then(function(resultado){
+function notaAnime(req, res) {
+    avaliacaoModel.notaAnime().then(function(resultado){
         // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function(erro){
@@ -39,6 +39,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-    listar,
+    notaAnime,
     cadastrar
 }

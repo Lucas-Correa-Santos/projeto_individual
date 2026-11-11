@@ -348,7 +348,7 @@ body {
 }
 
 canvas {
-  width: 100% !important;
+  width: 40% !important;
   height: 100% !important;
 }
 
@@ -762,4 +762,243 @@ canvas {
 .campo-avaliacao select:focus {
     outline: none;
     border: 2px solid var(--secondary-brand-color);
+}
+
+/* =========================
+   DASHBOARD - NOVA ESTRUTURA
+========================= */
+
+.dashboard-conteudo {
+    width: 100%;
+    height: 100vh;
+
+    padding: 20px 30px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+/* =========================
+   TOPO DA DASHBOARD
+========================= */
+
+.dashboard-topo {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.dashboard-topo h1 {
+    margin: 0;
+
+    font-size: 32px;
+
+    color: var(--new-black);
+}
+
+
+.dashboard-topo p {
+    margin: 5px 0 0 0;
+
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   KPIs
+========================= */
+
+.dashboard-kpis {
+    width: 100%;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+
+.kpi-card {
+    flex: 1;
+
+    min-height: 100px;
+
+    padding: 12px 15px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+
+.kpi-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.kpi-info span {
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+.kpi-info h2 {
+    margin: 0;
+
+    font-size: 22px;
+
+    color: var(--new-black);
+}
+
+
+/* =========================
+  ÁREA DOS GRÁFICOS
+========================= */
+
+.dashboard-graficos {
+    width: 100%;
+
+    flex: 1;
+
+    display: grid;
+
+    gap: 15px;
+
+    min-height: 0;
+}
+
+
+/* Card do gráfico */
+
+.grafico-card {
+    min-height: 400px;
+
+    padding: 18px;
+
+    box-sizing: border-box;
+
+    background-color: var(--cor-papiro);
+
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+/* =========================
+  CABEÇALHO DOS GRÁFICOS
+========================= */
+
+.grafico-header {
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+
+.grafico-header h2 {
+    margin: 0;
+
+    font-size: 22px;
+
+    color: var(--new-black);
+}
+
+
+.grafico-header p {
+    margin: 5px 0 0 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ÁREA DO CANVAS
+========================= */
+
+.grafico-area {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    position: relative;
+}
+
+/* KPI 1 */
+.kpi-card:nth-child(1) {
+    background-color: #dbeafe;
+
+    border-left: 4px solid #2563eb;
+}
+
+
+/* KPI 2 */
+.kpi-card:nth-child(2) {
+    background-color: #dcfce7;
+
+    border-left: 4px solid #16a34a;
+}
+
+
+/* KPI 3 */
+.kpi-card:nth-child(3) {
+    background-color: #fef3c7;
+
+    border-left: 4px solid #d97706;
+}
+
+
+/* KPI 4 */
+.kpi-card:nth-child(4) {
+    background-color: #fce7f3;
+
+    border-left: 4px solid #db2777;
+}
+
+.kpi-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--cor-aco-escuro);
+
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 15px;
 }

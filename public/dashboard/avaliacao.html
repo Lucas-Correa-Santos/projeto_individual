@@ -56,91 +56,91 @@
 
     </div>
 
-<div class="dash-right">
+    <div class="dash-right">
 
-    <div class="div-avaliacao">
+        <div class="div-avaliacao">
 
-        <h1>Avalie o anime de Attack on Titan</h1>
+            <h1>Avalie o anime de Attack on Titan</h1>
 
-        <div class="form-avaliacao">
+            <div class="form-avaliacao">
 
-            <div class="campo-avaliacao">
-                <label for="select_nota">
-                    De 1 a 5, qual nota você dá para Shingeki no Kyojin?
-                </label>
+                <div class="campo-avaliacao">
+                    <label for="select_nota">
+                        De 1 a 5, qual nota você dá para Shingeki no Kyojin?
+                    </label>
 
-                <select id="select_nota">
-                    <option disabled selected>Selecione uma nota</option>
-                    <option value="1">1 - Muito ruim</option>
-                    <option value="2">2 - Ruim</option>
-                    <option value="3">3 - Bom</option>
-                    <option value="4">4 - Muito bom</option>
-                    <option value="5">5 - Excelente</option>
-                </select>
+                    <select id="select_nota">
+                        <option value="" disabled selected>Selecione uma nota</option>
+                        <option value="1">1 - Muito ruim</option>
+                        <option value="2">2 - Ruim</option>
+                        <option value="3">3 - Bom</option>
+                        <option value="4">4 - Muito bom</option>
+                        <option value="5">5 - Excelente</option>
+                    </select>
+                </div>
+
+
+                <div class="campo-avaliacao">
+                    <label for="select_marcou">
+                        O que mais marcou você em Shingeki no Kyojin?
+                    </label>
+
+                    <select id="select_marcou">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="historia">História</option>
+                        <option value="personagens">Personagens</option>
+                        <option value="animacao">Animação</option>
+                        <option value="trilha_sonora">Trilha sonora</option>
+                        <option value="batalhas">Batalhas</option>
+                        <option value="misterios">Mistérios</option>
+                        <option value="reflexoes">Reflexões e mensagens</option>
+                    </select>
+                </div>
+
+
+                <div class="campo-avaliacao">
+                    <label for="select_tema">
+                        Qual tema de Shingeki no Kyojin mais chamou sua atenção?
+                    </label>
+
+                    <select id="select_tema">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="liberdade">Liberdade</option>
+                        <option value="persistencia">Persistência</option>
+                        <option value="preconceito">Preconceito e intolerância</option>
+                        <option value="consequencias">Consequências das decisões</option>
+                        <option value="perspectivas">Diferentes perspectivas</option>
+                        <option value="relacoes">Relações entre as pessoas</option>
+                    </select>
+                </div>
+
+
+                <div class="campo-avaliacao">
+                    <label for="select_conhecia">
+                        Você já conhecia Shingeki no Kyojin?
+                    </label>
+
+                    <select id="select_conhecia">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="sim_assisti">Sim, já assisti</option>
+                        <option value="assistindo">Estou assistindo atualmente</option>
+                        <option value="nao_assisti">Conheço, mas ainda não assisti</option>
+                    </select>
+                </div>
             </div>
+            <button id="btnIniciarQuiz" onclick="enviar()">Enviar Resposta</button>
 
-
-            <div class="campo-avaliacao">
-                <label for="select_marcou">
-                    O que mais marcou você em Shingeki no Kyojin?
-                </label>
-
-                <select id="select_marcou">
-                    <option disabled selected>Selecione uma opção</option>
-                    <option value="historia">História</option>
-                    <option value="personagens">Personagens</option>
-                    <option value="animacao">Animação</option>
-                    <option value="trilha_sonora">Trilha sonora</option>
-                    <option value="batalhas">Batalhas</option>
-                    <option value="misterios">Mistérios</option>
-                    <option value="reflexoes">Reflexões e mensagens</option>
-                </select>
-            </div>
-
-
-            <div class="campo-avaliacao">
-                <label for="select_tema">
-                    Qual tema de Shingeki no Kyojin mais chamou sua atenção?
-                </label>
-
-                <select id="select_tema">
-                    <option disabled selected>Selecione uma opção</option>
-                    <option value="liberdade">Liberdade</option>
-                    <option value="persistencia">Persistência</option>
-                    <option value="preconceito">Preconceito e intolerância</option>
-                    <option value="consequencias">Consequências das decisões</option>
-                    <option value="perspectivas">Diferentes perspectivas</option>
-                    <option value="relacoes">Relações entre as pessoas</option>
-                </select>
-            </div>
-
-
-            <div class="campo-avaliacao">
-                <label for="select_conhecia">
-                    Você já conhecia Shingeki no Kyojin?
-                </label>
-
-                <select id="select_conhecia">
-                    <option disabled selected>Selecione uma opção</option>
-                    <option value="sim_assisti">Sim, já assisti</option>
-                    <option value="assistindo">Estou assistindo atualmente</option>
-                    <option value="nao_assisti">Conheço, mas ainda não assisti</option>
-                </select>
-            </div>
         </div>
-        <button onclick="enviar()">Enviar Resposta</button>
 
     </div>
-
-</div>
-</body>
+    </body>
 
 </html>
 
 <script>
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
-    function enviar(){
+    function enviar() {
         let nota = select_nota.value;
         let aspecto = select_marcou.value;
         let tema = select_tema.value;
@@ -152,29 +152,31 @@
         var conheciaVar = conhecia;
         var userIDVar = sessionStorage.ID_USUARIO;
 
-        
-    console.log("Payload avaliacao:", {
-        notafinalServer: notafinalVar,
-        aspectoServer: aspectoVar,
-        temaServer: temaVar,
-        conheciaServer: conheciaVar,
-        userIDServer: userIDVar
-    });
-    if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.ID_USUARIO");
+        if (nota == "" || aspecto == "" || tema == "" || conhecia == "") {
+            alert("Preencha todos os campos!")
+        } else {
+            console.log("Payload avaliacao:", {
+                notafinalServer: notafinalVar,
+                aspectoServer: aspectoVar,
+                temaServer: temaVar,
+                conheciaServer: conheciaVar,
+                userIDServer: userIDVar
+            });
+            if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.ID_USUARIO");
 
-fetch("/avaliacao/cadastrar", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-        body: JSON.stringify({
-        notafinalServer: notafinalVar,
-        aspectoServer: aspectoVar,
-        temaServer: temaVar,
-        conheciaServer: conheciaVar,
-        userIDServer: userIDVar
-    }),
-})
-
+            fetch("/avaliacao/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    notafinalServer: notafinalVar,
+                    aspectoServer: aspectoVar,
+                    temaServer: temaVar,
+                    conheciaServer: conheciaVar,
+                    userIDServer: userIDVar
+                }),
+            })
+        }
     }
 </script>

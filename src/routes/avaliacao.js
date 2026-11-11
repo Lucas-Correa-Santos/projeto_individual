@@ -8,10 +8,11 @@ router.post("/cadastrar", function (req, res) {
     avaliacaoController.cadastrar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.get("/grafico/notaAnime", function (req, res) {
     // função a ser chamada quando acessar /avaliacao/listar
-    avaliacaoController.listar(req, res);
+    avaliacaoController.notaAnime(req, res);
 });
+
 
 module.exports = router;
 

@@ -1,8 +1,26 @@
 var database = require("../database/config")
 
-function listar() {
+function notaAnime() {
     var instrucao = `
-        SELECT * FROM avaliacao;
+            SELECT
+        CASE
+            WHEN nota = 1 THEN 'Muito ruim'
+            WHEN nota = 2 THEN 'Ruim'
+            WHEN nota = 3 THEN 'Bom'
+            WHEN nota = 4 THEN 'Muito bom'
+            WHEN nota = 5 THEN 'Excelente'
+            END AS classificacao,
+            COUNT(*) AS quantidade
+            FROM avaliacao
+            GROUP BY classificacao
+            ORDER BY
+            CASE classificacao
+            WHEN 'Muito ruim' THEN 1
+            WHEN 'Ruim' THEN 2
+            WHEN 'Bom' THEN 3
+            WHEN 'Muito bom' THEN 4
+            WHEN 'Excelente' THEN 5
+        END;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -19,5 +37,5 @@ function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece
 
 module.exports = {
     cadastrar,
-    listar
+    notaAnime
 };
