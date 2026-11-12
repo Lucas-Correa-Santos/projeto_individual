@@ -9,7 +9,7 @@
     <!-- Renomeei o nome do site de AquaTech para Shingeki -->
     <title>Shingeki | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -28,7 +28,7 @@
 
 <body>
 
-<div class="header-left">
+    <div class="header-left">
 
         <h1>Shingeki</h1>
 
@@ -59,128 +59,84 @@
     </div>
 
 
-<div class="dash-right">
+    <div class="dash-right">
 
-    <div class="dashboard-conteudo">
+        <div class="dashboard-conteudo">
 
-        <!-- Título -->
-        <div class="dashboard-topo">
-            <div>
-                <h1>Dashboard</h1>
-                <p>Acompanhe algumas informações sobre o anime.</p>
-            </div>
-        </div>
-
-
-        <!-- KPIs -->
-        <div class="dashboard-kpis">
-
-            <div class="kpi-card">
-                <div class="kpi-info">
-                    <span>Usuários cadastrados</span>
-                    <h2>--</h2>
+            <!-- Título -->
+            <div class="dashboard-topo">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Acompanhe algumas informações sobre o anime.</p>
                 </div>
             </div>
 
 
-            <div class="kpi-card">
-                <div class="kpi-info">
-                    <span>Avaliações</span>
-                    <h2>--</h2>
+            <!-- KPIs -->
+            <div class="dashboard-kpis">
+
+                <div class="kpi-card">
+                    <div class="kpi-info">
+                        <span>Usuários cadastrados</span>
+                        <h2>--</h2>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="kpi-card">
-                <div class="kpi-info">
-                    <span>Média de avaliação</span>
-                    <h2>--</h2>
+                <div class="kpi-card">
+                    <div class="kpi-info">
+                        <span>Avaliações</span>
+                        <h2>--</h2>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="kpi-card">
-                <div class="kpi-info">
-                    <span>Participações no quiz</span>
-                    <h2>--</h2>
+                <div class="kpi-card">
+                    <div class="kpi-info">
+                        <span>Média de avaliação</span>
+                        <h2>--</h2>
+                    </div>
                 </div>
+
+
+                <div class="kpi-card">
+                    <div class="kpi-info">
+                        <span>Participações no quiz</span>
+                        <h2>--</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Área dos gráficos -->
+            <div class="dashboard-graficos">
+
+                <!-- Gráfico 1 -->
+                <div class="grafico-card">
+
+                    <div class="grafico-area">
+                        <canvas id="notaAnime"></canvas>
+                    </div>
+
+                </div>
+
+
+                <!-- Gráfico 2 -->
+                <div class="grafico-card">
+
+                    <div class="grafico-area">
+                        <canvas id="respostasCertas"></canvas>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-
-<!-- Área dos gráficos -->
-<div class="dashboard-graficos">
-
-    <!-- Gráfico 1 -->
-    <div class="grafico-card">
-
-        <div class="grafico-header">
-            <div>
-                <h2>Gráfico 1</h2>
-            </div>
-        </div>
-
-        <div class="grafico-area">
-            <canvas id="notaAnime"></canvas>
-        </div>
-
     </div>
 
-
-    <!-- Gráfico 2 -->
-    <div class="grafico-card">
-
-        <div class="grafico-header">
-            <div>
-                <h2>Gráfico 2</h2>
-            </div>
-        </div>
-
-        <div class="grafico-area">
-            <canvas id="grafico2"></canvas>
-        </div>
-
-    </div>
-
-
-    <!-- Gráfico 3 -->
-    <div class="grafico-card">
-
-        <div class="grafico-header">
-            <div>
-                <h2>Gráfico 3</h2>
-            </div>
-        </div>
-
-        <div class="grafico-area">
-            <canvas id="grafico3"></canvas>
-        </div>
-
-    </div>
-
-
-    <!-- Gráfico 4 -->
-    <div class="grafico-card">
-
-        <div class="grafico-header">
-            <div>
-                <h2>Gráfico 4</h2>
-            </div>
-        </div>
-
-        <div class="grafico-area">
-            <canvas id="grafico4"></canvas>
-        </div>
-
-    </div>
-
-</div>
-
-    </div>
-
-</div>  
-    
 </body>
 
 </html>
@@ -190,7 +146,91 @@
 
     // let proximaAtualizacao;
 
-    window.onload = notaAnimeGrafico; // Carregar os dados do gráfico
+    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); // Carregar os dados do gráfico
+
+    function respostasCertasGrafico() {
+
+        fetch(`/avaliacao/grafico/respostasCertas`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGraficorespostasCertas(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGraficorespostasCertas(resposta) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Quantidade',
+                    data: [],
+                    fill: false,
+                    borderColor: 'rgb(199, 52, 52)',
+                    tension: 0.1
+                }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (let i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.Nome);
+            dados.datasets[0].data.push(registro.Respostas_Certas);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,                // habilita o título
+                        text: 'Usuarios com mais respostas certas',    // texto do título (pode ser uma string ou variável)
+                        align: 'center',              // 'start' | 'center' | 'end'
+                        color: '#17191D',             // cor do título
+                    },
+                },
+            }
+        };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+        document.getElementById(`respostasCertas`),
+        config
+    );
+    }
+
 
     // // function notaAnime() {
     // //     var aquarios = JSON.parse(sessionStorage.AQUARIOS);
@@ -292,13 +332,13 @@
         let dados = {
             labels: labels,
             datasets: [
-            {
-                label: 'Quantidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
-                tension: 0.1
-            }]
+                {
+                    label: 'Quantidade',
+                    data: [],
+                    fill: false,
+                    borderColor: 'rgb(199, 52, 52)',
+                    tension: 0.1
+                }]
         };
 
         console.log('----------------------------------------------')
@@ -306,7 +346,7 @@
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
+        for (let i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.classificacao);
             dados.datasets[0].data.push(registro.quantidade);
@@ -324,18 +364,28 @@
         const config = {
             type: 'pie',
             data: dados,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,                // habilita o título
+                        text: 'Avaliações do anime',    // texto do título (pode ser uma string ou variável)
+                        align: 'center',              // 'start' | 'center' | 'end'
+                        color: '#17191D',             // cor do título
+                    },
+                },
+            }
         };
 
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`notaAnime`),
-            config
-        );
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+        document.getElementById(`notaAnime`),
+        config
+    );
     }
 
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
+    // buscando a última medida inserida em tabela contendo as capturas,
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models

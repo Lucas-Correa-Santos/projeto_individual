@@ -16,6 +16,15 @@ CREATE TABLE usuario(
         CHECK (tipo_usuario IN ('admin', 'padrao'))
 );
 
+SELECT 
+    u.username AS Nome, 
+    SUM(q.respostas_certas) AS Respostas_Certas 
+FROM quiz q
+INNER JOIN usuario u ON q.fk_usuario = u.id
+GROUP BY u.username
+ORDER BY Respostas_Certas DESC, u.username ASC
+LIMIT 8;
+
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     fk_usuario INT NOT NULL,
@@ -25,6 +34,36 @@ CREATE TABLE quiz(
     dt_tentativa DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
+
+INSERT INTO quiz
+(fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
+VALUES
+
+-- Usuário 1
+(1, 15, 0, 15),
+(1, 13, 2, 13),
+(1, 11, 4, 11),
+(1, 9, 6, 9),
+(1, 7, 8, 7),
+(1, 14, 1, 14),
+(1, 12, 3, 12),
+
+-- Usuário 2
+(2, 10, 5, 10),
+(2, 8, 7, 8),
+(2, 6, 9, 6),
+(2, 12, 3, 12),
+(2, 15, 0, 15),
+(2, 9, 6, 9),
+(2, 11, 4, 11),
+
+-- Usuário 3
+(3, 5, 10, 5),
+(3, 7, 8, 7),
+(3, 10, 5, 10),
+(3, 13, 2, 13),
+(3, 8, 7, 8),
+(3, 14, 1, 14);
 
 SELECT * FROM quiz;
 
@@ -74,6 +113,32 @@ VALUES
 (2, 'personagens', 'relacoes', 4, 'assistindo'),
 (3, 'animacao', 'liberdade', 4, 'nao_assisti');
 
+INSERT INTO quiz
+(fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
+VALUES
+
+-- Usuário 4
+(11, 12, 3, 12),
+(11, 10, 5, 10),
+(11, 14, 1, 14),
+(11, 11, 4, 11),
+(11, 13, 2, 13),
+
+-- Usuário 5
+(10, 8, 7, 8),
+(10, 9, 6, 9),
+(10, 11, 4, 11),
+(10, 7, 8, 7),
+(10, 10, 5, 10),
+
+-- Usuário 6
+(9, 5, 10, 5),
+(9, 7, 8, 7),
+(9, 9, 6, 9),
+(9, 12, 3, 12),
+(9, 10, 5, 10);
+
+
 INSERT INTO usuario 
 (username, email, senha, tipo_usuario, tipo_tita)
 VALUES
@@ -107,19 +172,9 @@ VALUES
     'padrao',
     'colossal'
 );
+SELECT id, tipo_tita, username FROM usuario;
 
-
-/* SELECT 
-	TRUNCATE (
-    SUM(
-		CASE
-        WHEN nota = 1 THEN  'Muito Ruim'
-		WHEN nota = 2 THEN 'Ruim'
-        WHEN nota = 3 THEN 'Bom'
-        WHEN nota = 4 THEN 'Muito Bom'
-        ELSE 'Excelente'
-        END)
-    ) AS avaliacao_anime FROM avaliaocao; */
+UPDATE usuario SET tipo_tita = "mandibula" WHERE id = 1;
     
 SELECT
     CASE

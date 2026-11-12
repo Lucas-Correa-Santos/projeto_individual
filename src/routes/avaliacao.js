@@ -13,6 +13,11 @@ router.get("/grafico/notaAnime", function (req, res) {
     avaliacaoController.notaAnime(req, res);
 });
 
+router.get("/grafico/respostasCertas", function (req, res) {
+    // função a ser chamada quando acessar /avaliacao/listar
+    avaliacaoController.respostasCertas(req, res);
+});
+
 
 module.exports = router;
 

@@ -348,7 +348,7 @@ body {
 }
 
 canvas {
-  width: 40% !important;
+  width: 100% !important;
   height: 100% !important;
 }
 
@@ -818,7 +818,7 @@ canvas {
 ========================= */
 
 .dashboard-kpis {
-    width: 100%;
+    width: 98.7%;
 
     display: flex;
 
@@ -881,10 +881,10 @@ canvas {
 
 .dashboard-graficos {
     width: 100%;
+    
+    flex-wrap: wrap;
 
-    flex: 1;
-
-    display: grid;
+    display: flex;
 
     gap: 15px;
 
@@ -897,6 +897,8 @@ canvas {
 .grafico-card {
     min-height: 400px;
 
+    width: 435px;
+    
     padding: 18px;
 
     box-sizing: border-box;
@@ -906,7 +908,7 @@ canvas {
     border-radius: 8px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
     overflow: hidden;
 }
@@ -945,13 +947,17 @@ canvas {
 ========================= */
 
 .grafico-area {
-    width: 100%;
+    width: 400px;
 
-    flex: 1;
-
-    min-height: 0;
+    min-height: 260px;
 
     position: relative;
+}
+
+.grafico-area canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* KPI 1 */

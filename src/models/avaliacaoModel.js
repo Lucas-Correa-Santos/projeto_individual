@@ -26,6 +26,21 @@ function notaAnime() {
     return database.executar(instrucao);
 }
 
+function respostasCertas() {
+    var instrucao = `
+    SELECT 
+    u.username AS Nome, 
+    SUM(q.respostas_certas) AS Respostas_Certas 
+    FROM quiz q
+    INNER JOIN usuario u ON q.fk_usuario = u.id
+    GROUP BY u.username
+    ORDER BY Respostas_Certas DESC, u.username ASC
+    LIMIT 5;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece_anime) {
     var instrucao = `
         INSERT INTO avaliacao (fk_usuario, aspecto, tema, nota, conhecia)
@@ -37,5 +52,6 @@ function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece
 
 module.exports = {
     cadastrar,
-    notaAnime
+    notaAnime,
+    respostasCertas
 };
