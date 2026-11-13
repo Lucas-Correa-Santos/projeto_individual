@@ -30,11 +30,7 @@
         <li class="agora">
           <a href="./index.html">Inicial</a>
         </li>
-
-        <li>
-          <a href="./titans.html">Titans</a>
-        </li>
-
+        
         <li>
           <a href="./valores.html">Valores</a>
         </li>
@@ -183,6 +179,181 @@
 
   </div>
 
+</div>
+
+  <!-- CARROSSEL DOS NOVE TITÃS -->
+  <section class="secao-titas">
+
+    <div class="titulo-titas">
+      <h1>Os Nove Titãs Primordiais</h1>
+
+      <p>
+        Conheça os Nove Titãs que fazem parte da história de
+        Shingeki no Kyojin.
+      </p>
+    </div>
+
+
+    <div class="carrossel-container">
+
+      <button class="carrossel-btn proximo" onclick="moverCarrossel(1)">
+        &#10094;
+      </button>
+
+
+      <div class="carrossel-viewport">
+
+        <div class="carrossel-titas" id="carrosselTitas">
+
+
+          <!-- TITÃ COLOSSAL -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_colossal.jpeg" alt="Titã Colossal">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Colossal</h2>
+
+              <p>
+                Conhecido por seu tamanho gigantesco e pelo enorme
+                poder de destruição causado durante sua transformação.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ BLINDADO -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_blindado.png" alt="Titã Blindado">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Blindado</h2>
+
+              <p>
+                Possui uma poderosa camada de endurecimento que protege
+                grande parte de seu corpo.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ DE ATAQUE -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_ataque_imagem.jpeg" alt="Titã de Ataque">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã de Ataque</h2>
+
+              <p>
+                Um Titã marcado por sua força, resistência e pela
+                determinação presente em sua trajetória.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ FÊMEA -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita-femea-annie.jpg" alt="Titã Fêmea">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Fêmea</h2>
+
+              <p>
+                Destaca-se pela agilidade, versatilidade e grande
+                habilidade em combate.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ BESTIAL -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_bestial.jpeg" alt="Titã Bestial">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Bestial</h2>
+
+              <p>
+                Sua aparência pode variar conforme o portador, assim
+                como suas características em combate.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ MANDÍBULA -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_mandibula.jpeg" alt="Titã Mandíbula">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Mandíbula</h2>
+
+              <p>
+                Conhecido principalmente por sua velocidade, agilidade
+                e mandíbulas extremamente poderosas.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ FUNDADOR -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_fundador.jpeg" alt="Titã Fundador">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Fundador</h2>
+
+              <p>
+                Um dos Titãs mais importantes e misteriosos da história,
+                cercado por segredos e poderes únicos.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ CARROÇA -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_carroca.jpeg" alt="Titã Carroça">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Carroça</h2>
+
+              <p>
+                Possui uma resistência excepcional e grande capacidade
+                para permanecer transformado por longos períodos.
+              </p>
+            </div>
+          </div>
+
+
+          <!-- TITÃ MARTELO DE GUERRA -->
+          <div class="card-tita">
+            <img src="./assets/imgs/tita_martelo_guerra.jpeg" alt="Titã Martelo de Guerra">
+
+            <div class="conteudo-card-tita">
+              <h2>Titã Martelo de Guerra</h2>
+
+              <p>
+                É capaz de utilizar o endurecimento para criar armas
+                e diferentes estruturas durante o combate.
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <button class="carrossel-btn anterior" onclick="moverCarrossel(-1)">
+        &#10095;
+      </button>
+
+    </div>
+
+  </section>
+
   <div class="alem">
 
     <div class="div-texto">
@@ -222,6 +393,38 @@
     </div>
 
   </div>
+
+<script>
+
+    let posicaoCarrossel = 0;
+
+    function moverCarrossel(direcao) {
+
+        const carrossel = document.getElementById("carrosselTitas");
+
+        const tamanhoMovimento = 325;
+
+        posicaoCarrossel += direcao * tamanhoMovimento;
+
+        const limiteDireita =
+            -(carrossel.scrollWidth - carrossel.parentElement.clientWidth);
+
+
+        if (posicaoCarrossel > 0) {
+            posicaoCarrossel = 0;
+        }
+
+
+        if (posicaoCarrossel < limiteDireita) {
+            posicaoCarrossel = limiteDireita;
+        }
+
+
+        carrossel.style.transform =
+            `translateX(${posicaoCarrossel}px)`;
+    }
+
+  </script>
 
 </body>
 

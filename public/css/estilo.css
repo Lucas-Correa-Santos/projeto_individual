@@ -946,6 +946,175 @@ input {
     text-align: center;
 }
 
+/* =========================
+   CARROSSEL DOS NOVE TITÃS
+========================= */
+
+.secao-titas {
+    width: 100%;
+    min-height: 650px;
+    padding: 80px 0;
+
+    background-color: var(--cor-aco-escuro);
+    color: var(--cor-papiro);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.titulo-titas {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.titulo-titas h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+
+.titulo-titas p {
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.5;
+}
+
+
+/* CONTAINER PRINCIPAL */
+
+.carrossel-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* ÁREA VISÍVEL DO CARROSSEL */
+
+.carrossel-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* LISTA DOS TITÃS */
+
+.carrossel-titas {
+    display: flex;
+    gap: 25px;
+
+    transition: transform 0.5s ease;
+}
+
+
+/* CARD INDIVIDUAL */
+
+.card-tita {
+    min-width: 300px;
+    height: 430px;
+
+    background-color: var(--cor-papiro);
+    color: var(--cor-fundo);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--cor-vermelho-batalha);
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* EFEITO AO PASSAR O MOUSE */
+
+.card-tita:hover {
+    transform: translateY(-10px);
+}
+
+
+/* IMAGEM */
+
+.card-tita img {
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+
+    border-bottom: 3px solid var(--cor-vermelho-batalha);
+}
+
+
+/* TEXTO */
+
+.conteudo-card-tita {
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+}
+
+
+.conteudo-card-tita h2 {
+    margin: 0 0 10px 0;
+
+    color: var(--cor-strong-red);
+}
+
+
+.conteudo-card-tita p {
+    margin: 0;
+
+    line-height: 1.4;
+}
+
+
+/* BOTÕES DO CARROSSEL */
+
+.carrossel-btn {
+    width: 55px;
+    height: 55px;
+
+    min-width: 55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--cor-strong-red);
+
+    color: var(--cor-papiro);
+
+    border: 1px solid var(--cor-papiro);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 25px;
+
+    transition: 0.3s;
+}
+
+
+.carrossel-btn:hover {
+    background-color: var(--cor-vermelho-batalha);
+
+    transform: scale(1.1);
+}
+
 @keyframes bell {
   0% {
     transform: rotate(25deg)

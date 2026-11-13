@@ -24,16 +24,16 @@
                 <li>
                     <a href="index.html">Inicial</a>
                 </li>
-                <li>
-                    <a href="titans.html">Titans</a>
-                </li>
+                
                 <li>
                     <a href="./valores.html">Valores</a>
                 </li>
+
                 <li>|</li>
                 <li class="agora">
                     <a href="#">Login</a>
                 </li>
+                
                 <li>
                     <a href="cadastro.html">Cadastro</a>
                 </li>
@@ -103,6 +103,7 @@
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
+        var tipo_usuario = sessionStorage.TIPO_USUARIO;
 
         if (emailVar == "" || senhaVar == "") {
             window.location.href = "./dashboard/dashboard.html";

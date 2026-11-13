@@ -4,11 +4,18 @@ function validarSessao() {
     var username = sessionStorage.USERNAME_USUARIO;
 
     var b_usuario = document.getElementById("b_usuario");
-
+    var tipo_usuario = document.getElementById("tipo_usuario");
+    
     if (email != null && username != null) {
         b_usuario.innerHTML = username;
     } else {
         window.location = "../login.html";
+    }
+
+    if (tipo_usuario == 'admin') {
+        window.location = "../dashboard/admin.html";
+    } else {
+        window.location = "../dashboard/dashboard.html";
     }
 }
 
