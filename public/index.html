@@ -30,7 +30,7 @@
         <li class="agora">
           <a href="./index.html">Inicial</a>
         </li>
-        
+
         <li>
           <a href="./valores.html">Valores</a>
         </li>
@@ -76,7 +76,8 @@
     </div>
 
   </div>
-  <br><br>
+  <br>
+  <br>
   
   <!-- APRESENTAÇÃO DO ANIME -->
   <div class="sobre-anime">
@@ -85,26 +86,16 @@
       <h1>Sobre a Historia</h1>
       
       <h3>
-        Shingeki no Kyojin, conhecido internacionalmente como Attack on Titan,
-        é uma obra japonesa criada por Hajime Isayama.
+        A história se passa em um mundo onde a humanidade vive protegida por enormes muralhas, tentando sobreviver longe das criaturas gigantes conhecidas como Titãs.
 
         <br><br>
 
-        A história se passa em um mundo onde a humanidade vive cercada por
-        enormes muralhas, buscando proteção contra criaturas gigantes
-        conhecidas como Titãs.
+        No primeiro episódio, porém, essa sensação de segurança é destruída, mudando completamente a vida dos personagens e mostrando a ameaça que existe além das muralhas.
 
         <br><br>
 
-        Nesse cenário, acompanhamos personagens que enfrentam perdas,
-        descobertas e decisões capazes de transformar suas vidas e o
-        destino da humanidade.
+        E essa é apenas a primeira vez que somos apresentados aos seres que se tornariam uma das partes mais marcantes da obra: os Titãs.
 
-        <br><br>
-
-        Porém, conforme avançamos pela história, percebemos que aquilo
-        que parecia ser apenas uma luta pela sobrevivência se transforma
-        em algo muito maior.
       </h3>
       
     </div>
@@ -116,12 +107,211 @@
     
     
   </div>
+  
+<!-- CARROSSEL DOS NOVE TITÃS -->
+<section class="secao-titas">
 
-  <div class="centro">
+    <div class="titulo-titas">
 
-    <br><br>
-    <h1>Um mundo entre muralhas</h1>
-  </div>
+        <h1>Os Nove Titãs Primordiais</h1>
+
+    </div>
+
+
+    <div class="carrossel-container">
+
+        <button class="carrossel-btn anterior" onclick="moverCarrossel(1)">
+            &#10094;
+        </button>
+
+
+        <div class="carrossel-viewport">
+
+            <div class="carrossel-titas" id="carrosselTitas">
+
+
+                <!-- TITÃ COLOSSAL -->
+                <div class="card-tita" onclick="abrirModal('colossal')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_colossal.jpeg" alt="Titã Colossal">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Colossal</h2>
+                        <p class="sentimento-tita">CULPA</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ BLINDADO -->
+                <div class="card-tita" onclick="abrirModal('blindado')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_blindado.png" alt="Titã Blindado">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Blindado</h2>
+                        <p class="sentimento-tita">ARREPENDIMENTO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ DE ATAQUE -->
+                <div class="card-tita" onclick="abrirModal('ataque')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_ataque_imagem.jpeg" alt="Titã de Ataque">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+                    <div class="conteudo-card-tita">
+                        <h2>Titã de Ataque</h2>
+                        <p class="sentimento-tita">ODIO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ FÊMEA -->
+                <div class="card-tita" onclick="abrirModal('femea')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita-femea-annie.jpg" alt="Titã Fêmea">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Fêmea</h2>
+                        <p class="sentimento-tita">SOLIDÃO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ BESTIAL -->
+                <div class="card-tita" onclick="abrirModal('bestial')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_bestial.jpeg" alt="Titã Bestial">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Bestial</h2>
+                        <p class="sentimento-tita">RESSENTIMENTO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ MANDÍBULA -->
+                <div class="card-tita" onclick="abrirModal('mandibula')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_mandibula.jpeg" alt="Titã Mandíbula">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Mandíbula</h2>
+                        <p class="sentimento-tita">ORGULHO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ FUNDADOR -->
+                <div class="card-tita" onclick="abrirModal('fundador')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_fundador.jpeg" alt="Titã Fundador">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Fundador</h2>
+                        <p class="sentimento-tita">MISTÉRIO</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ CARROÇA -->
+                <div class="card-tita" onclick="abrirModal('carroca')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_carroca.jpeg" alt="Titã Carroça">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Carroça</h2>
+                        <p class="sentimento-tita">LEALDADE</p>
+                    </div>
+
+                </div>
+
+
+                <!-- TITÃ MARTELO DE GUERRA -->
+                <div class="card-tita" onclick="abrirModal('martelo')">
+
+                    <div class="imagem-tita">
+                        <img src="./assets/imgs/tita_martelo_guerra.jpeg" alt="Titã Martelo de Guerra">
+
+                        <div class="overlay-tita">
+                            <span>CLIQUE PARA CONHECER</span>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-card-tita">
+                        <h2>Titã Martelo de Guerra</h2>
+                        <p class="sentimento-tita">DEVER</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+<button class="carrossel-btn proximo" onclick="moverCarrossel(-1)">
+            &#10095;
+        </button>
+        
+
+    </div>
+
+</section>
 
   <div class="sobre">
 
@@ -153,7 +343,7 @@
         <h2 class="titulo-sobreposto" data-text="transformacao">Uma história em transformação</h2>
 
         <p>
-          O que começa como uma luta pela sobrevivência se desenvolve de forma
+          O que começa como uma luta pela sobrevivência, se desenvolve de forma
           cada vez mais complexa. A cada descoberta, novos conflitos, escolhas
           e perspectivas transformam completamente a maneira como enxergamos
           esse mundo.
@@ -178,181 +368,6 @@
       </div>
 
   </div>
-
-</div>
-
-  <!-- CARROSSEL DOS NOVE TITÃS -->
-  <section class="secao-titas">
-
-    <div class="titulo-titas">
-      <h1>Os Nove Titãs Primordiais</h1>
-
-      <p>
-        Conheça os Nove Titãs que fazem parte da história de
-        Shingeki no Kyojin.
-      </p>
-    </div>
-
-
-    <div class="carrossel-container">
-
-      <button class="carrossel-btn proximo" onclick="moverCarrossel(1)">
-        &#10094;
-      </button>
-
-
-      <div class="carrossel-viewport">
-
-        <div class="carrossel-titas" id="carrosselTitas">
-
-
-          <!-- TITÃ COLOSSAL -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_colossal.jpeg" alt="Titã Colossal">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Colossal</h2>
-
-              <p>
-                Conhecido por seu tamanho gigantesco e pelo enorme
-                poder de destruição causado durante sua transformação.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ BLINDADO -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_blindado.png" alt="Titã Blindado">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Blindado</h2>
-
-              <p>
-                Possui uma poderosa camada de endurecimento que protege
-                grande parte de seu corpo.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ DE ATAQUE -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_ataque_imagem.jpeg" alt="Titã de Ataque">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã de Ataque</h2>
-
-              <p>
-                Um Titã marcado por sua força, resistência e pela
-                determinação presente em sua trajetória.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ FÊMEA -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita-femea-annie.jpg" alt="Titã Fêmea">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Fêmea</h2>
-
-              <p>
-                Destaca-se pela agilidade, versatilidade e grande
-                habilidade em combate.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ BESTIAL -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_bestial.jpeg" alt="Titã Bestial">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Bestial</h2>
-
-              <p>
-                Sua aparência pode variar conforme o portador, assim
-                como suas características em combate.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ MANDÍBULA -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_mandibula.jpeg" alt="Titã Mandíbula">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Mandíbula</h2>
-
-              <p>
-                Conhecido principalmente por sua velocidade, agilidade
-                e mandíbulas extremamente poderosas.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ FUNDADOR -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_fundador.jpeg" alt="Titã Fundador">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Fundador</h2>
-
-              <p>
-                Um dos Titãs mais importantes e misteriosos da história,
-                cercado por segredos e poderes únicos.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ CARROÇA -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_carroca.jpeg" alt="Titã Carroça">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Carroça</h2>
-
-              <p>
-                Possui uma resistência excepcional e grande capacidade
-                para permanecer transformado por longos períodos.
-              </p>
-            </div>
-          </div>
-
-
-          <!-- TITÃ MARTELO DE GUERRA -->
-          <div class="card-tita">
-            <img src="./assets/imgs/tita_martelo_guerra.jpeg" alt="Titã Martelo de Guerra">
-
-            <div class="conteudo-card-tita">
-              <h2>Titã Martelo de Guerra</h2>
-
-              <p>
-                É capaz de utilizar o endurecimento para criar armas
-                e diferentes estruturas durante o combate.
-              </p>
-            </div>
-          </div>
-
-
-        </div>
-
-      </div>
-
-
-      <button class="carrossel-btn anterior" onclick="moverCarrossel(-1)">
-        &#10095;
-      </button>
-
-    </div>
-
-  </section>
 
   <div class="alem">
 
@@ -394,20 +409,209 @@
 
   </div>
 
+<!-- MODAL DOS TITÃS -->
+<div class="modal-tita" id="modalTita">
+
+    <div class="conteudo-modal-tita">
+
+        <!-- BOTÃO DE FECHAR -->
+        <button class="fechar-modal" onclick="fecharModal()">
+            &times;
+        </button>
+
+
+        <!-- LADO ESQUERDO: IMAGEM -->
+        <div class="modal-imagem">
+
+            <img
+                id="modalImagem"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+        <!-- LADO DIREITO: INFORMAÇÕES -->
+        <div class="modal-informacoes">
+
+            <!-- NOME -->
+            <h1 id="modalNome"></h1>
+
+
+            <!-- SENTIMENTO -->
+            <div class="modal-info">
+
+                <h3>SENTIMENTO</h3>
+
+                <p id="modalSentimento"></p>
+
+            </div>
+
+
+            <!-- HABILIDADES -->
+            <div class="modal-info">
+
+                <h3>HABILIDADES</h3>
+
+                <p id="modalHabilidades"></p>
+
+            </div>
+
+
+            <!-- ALTURA -->
+            <div class="modal-info">
+
+                <h3>ALTURA</h3>
+
+                <p id="modalAltura"></p>
+
+            </div>
+
+
+            <!-- DESCRIÇÃO -->
+            <div class="modal-info">
+
+                <h3>DESCRIÇÃO</h3>
+
+                <p id="modalDescricao"></p>
+
+            </div>
+
+
+            <!-- PRIMEIRA APARIÇÃO -->
+            <div class="modal-info">
+
+                <h3>PRIMEIRA APARIÇÃO</h3>
+
+                <p id="modalAparicao"></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script>
+
+  const titas = {
+
+    colossal: {
+        nome: "Titã Colossal",
+        sentimento: "Culpa",
+        habilidades: "Transformação explosiva, emissão intensa de vapor e força destrutiva devido ao seu enorme tamanho.",
+        altura: "60 metros",
+        imagem: "./assets/imgs/tita_colossal.jpeg",
+        descricao: "Seu sentimento central representa o peso das consequências de decisões tomadas e das vidas afetadas por elas.",
+        aparicao: "Temporada 1, episódio 1 — Para Você, Daqui a 2.000 Anos"
+    },
+
+
+    blindado: {
+        nome: "Titã Blindado",
+        sentimento: "Arrependimento",
+        habilidades: "Placas de endurecimento que protegem grande parte do corpo, resistência a impactos e capacidade de romper defesas com investidas.",
+        altura: "15 metros",
+        imagem: "./assets/imgs/tita_blindado.png",
+        descricao: "É marcado pelo conflito entre suas responsabilidades e os laços que constrói ao longo de sua trajetória, enfrentando o peso das consequências de suas escolhas.",
+        aparicao: "Temporada 1, episódio 2 — Naquele Dia"
+    },
+
+
+    ataque: {
+        nome: "Titã de Ataque",
+        sentimento: "Determinação",
+        habilidades: "Força e resistência elevadas, combate versátil e uma habilidade singular ligada às memórias de futuros herdeiros.",
+        altura: "15 metros",
+        imagem: "./assets/imgs/tita_ataque_imagem.jpeg",
+        descricao: "Sua determinação o impulsiona a continuar diante de obstáculos aparentemente impossíveis, mas também pode afastá-lo de outras perspectivas e levar a decisões irreversíveis.",
+        aparicao: "Temporada 1, episódio 7 — Pequena Lâmina"
+    },
+
+
+    femea: {
+        nome: "Titã Fêmea",
+        sentimento: "Solidão",
+        habilidades: "Grande versatilidade em combate, capacidade de endurecimento e habilidade de atrair Titãs através de seu grito.",
+        altura: "14 metros",
+        imagem: "./assets/imgs/tita-femea-annie.jpg",
+        descricao: "A solidão aparece em sua forma de carregar responsabilidades e manter distância das pessoas ao seu redor, mesmo quando seus vínculos continuam influenciando suas escolhas.",
+        aparicao: "Temporada 1, episódio 17 — Titã Fêmea"
+    },
+
+
+    bestial: {
+        nome: "Titã Bestial",
+        sentimento: "Ressentimento",
+        habilidades: "A forma varia conforme o portador. Destaca-se por ataques de longo alcance e, dependendo do portador, pode possuir habilidades especiais relacionadas aos Titãs.",
+        altura: "17 metros",
+        imagem: "./assets/imgs/tita_bestial.jpeg",
+        descricao: "O ressentimento está ligado às experiências da infância e à forma como feridas pessoais podem passar a definir toda uma visão de mundo.",
+        aparicao: "Temporada 2, episódio 1 — Titã Bestial"
+    },
+
+
+    mandibula: {
+        nome: "Titã Mandíbula",
+        sentimento: "Orgulho",
+        habilidades: "Grande velocidade e agilidade, além de garras e mandíbulas capazes de romper materiais extremamente resistentes.",
+        altura: "5 metros",
+        imagem: "./assets/imgs/tita_mandibula.jpeg",
+        descricao: "O orgulho aparece no desejo de provar seu valor e demonstrar superioridade, mas também convive com inseguranças, rivalidades e preocupação com outras pessoas.",
+        aparicao: "Temporada 4, episódio 1 — O Outro Lado do Mar"
+    },
+
+
+    fundador: {
+        nome: "Titã Fundador",
+        sentimento: "Mistério",
+        habilidades: "Possui habilidades ligadas aos Titãs e aos caminhos, sendo uma das formas mais importantes para compreender a origem e o funcionamento de seus poderes.",
+        altura: "Varia conforme o portador",
+        imagem: "./assets/imgs/tita_fundador.jpeg",
+        descricao: "Representa uma parte fundamental dos mistérios da obra. Conforme a história avança, novas informações ajudam a compreender sua importância e as questões relacionadas à origem dos Titãs.",
+        aparicao: "Temporada 2, episódio 12 — O Grito"
+    },
+
+
+    carroca: {
+        nome: "Titã Carroça",
+        sentimento: "Lealdade",
+        habilidades: "Resistência excepcional para permanecer transformado por longos períodos, locomoção em quatro patas e capacidade de transportar armamentos e apoiar tropas.",
+        altura: "4 metros",
+        imagem: "./assets/imgs/tita_carroca.jpeg",
+        descricao: "A lealdade aparece na disposição de continuar lutando ao lado de seus companheiros, mesmo diante dos riscos e das contradições presentes em suas escolhas.",
+        aparicao: "Temporada 3, episódio 13 — A Cidade Onde Tudo Começou"
+    },
+
+
+    martelo: {
+        nome: "Titã Martelo de Guerra",
+        sentimento: "Dever",
+        habilidades: "Cria armas, estacas e estruturas usando endurecimento, possuindo grande versatilidade durante o combate.",
+        altura: "15 metros",
+        imagem: "./assets/imgs/tita_martelo_guerra.jpeg",
+        descricao: "O dever representa a responsabilidade de lutar pelos interesses e pela família que representa, assumindo uma missão que vai além de seus próprios desejos.",
+        aparicao: "Temporada 4, episódio 6 — O Titã Martelo de Guerra"
+    }
+
+};
 
     let posicaoCarrossel = 0;
 
-    function moverCarrossel(direcao) {
+    const carrossel = document.getElementById("carrosselTitas");
 
-        const carrossel = document.getElementById("carrosselTitas");
+
+    function moverCarrossel(direcao) {
 
         const tamanhoMovimento = 325;
 
-        posicaoCarrossel += direcao * tamanhoMovimento;
-
         const limiteDireita =
             -(carrossel.scrollWidth - carrossel.parentElement.clientWidth);
+
+
+        posicaoCarrossel += direcao * tamanhoMovimento;
 
 
         if (posicaoCarrossel > 0) {
@@ -422,9 +626,61 @@
 
         carrossel.style.transform =
             `translateX(${posicaoCarrossel}px)`;
+
     }
 
-  </script>
+function abrirModal(tipoTita) {
+
+    const dadosTita = titas[tipoTita];
+
+
+    document.getElementById("modalNome").innerHTML =
+        dadosTita.nome;
+
+
+    document.getElementById("modalSentimento").innerHTML =
+        dadosTita.sentimento;
+
+
+    document.getElementById("modalHabilidades").innerHTML =
+        dadosTita.habilidades;
+
+
+    document.getElementById("modalAltura").innerHTML =
+        dadosTita.altura;
+
+
+    document.getElementById("modalDescricao").innerHTML =
+        dadosTita.descricao;
+
+
+    document.getElementById("modalAparicao").innerHTML =
+        dadosTita.aparicao;
+
+
+    document.getElementById("modalImagem").src =
+        dadosTita.imagem;
+
+
+    document.getElementById("modalImagem").alt =
+        dadosTita.nome;
+
+
+    const modal = document.getElementById("modalTita");
+
+    modal.style.display = "flex";
+
+}
+
+
+function fecharModal() {
+
+    const modal = document.getElementById("modalTita");
+
+    modal.style.display = "none";
+
+}
+</script>
 
 </body>
 

@@ -348,8 +348,8 @@ body {
 }
 
 canvas {
-  width: 100% !important;
-  height: 100% !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 /* PAGINA DOS GRÁFICOS 2023-2026 */
@@ -956,8 +956,8 @@ canvas {
 
 .grafico-area canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 /* KPI 1 */

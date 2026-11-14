@@ -25,6 +25,12 @@ GROUP BY u.username
 ORDER BY Respostas_Certas DESC, u.username ASC
 LIMIT 8;
 
+/*
+SELECT u.username, COUNT(a.aspecto) FROM avaliacao AS a
+INNER JOIN usuario AS u ON a.fk_usuario = u.username
+GROUP BY u.username
+ORDER BY a.aspecto DESC, u.username ASC; */
+
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     fk_usuario INT NOT NULL,
@@ -77,6 +83,9 @@ CREATE TABLE avaliacao(
     dt_avaliacao DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
+
+SELECT COUNT(aspecto) FROM avaliacao
+GROUP BY fk_usuario;
 
 INSERT INTO avaliacao
 (fk_usuario, aspecto, tema, nota, conhecia)
@@ -172,10 +181,10 @@ VALUES
     'padrao',
     'colossal'
 );
-SELECT id, tipo_tita, username FROM usuario;
+
 
 UPDATE usuario SET tipo_tita = "mandibula" WHERE id = 1;
-    
+    -- SELECT DE AVALIAÇÃO DA DASHBOARD	
 SELECT
     CASE
         WHEN nota = 1 THEN 'Muito ruim'
@@ -195,3 +204,7 @@ ORDER BY
         WHEN 'Muito bom' THEN 4
         WHEN 'Excelente' THEN 5
     END;
+    
+-- SELECT TIPO DE TITANS ESCOLHIDOS
+SELECT  
+	CASE 
