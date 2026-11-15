@@ -162,7 +162,7 @@
                 conheciaServer: conheciaVar,
                 userIDServer: userIDVar
             });
-            if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.ID_USUARIO");
+            if (!userIDVar) console.warn("userIDVar indefinido. Verifique sessionStorage.USERNAME_USUARIO");
 
             fetch("/avaliacao/cadastrar", {
                 method: "POST",

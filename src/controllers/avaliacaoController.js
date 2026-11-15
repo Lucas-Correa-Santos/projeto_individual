@@ -18,6 +18,14 @@ function respostasCertas(req, res) {
     })
 }
 
+function tiposTitas(req, res) {
+    avaliacaoModel.tiposTitas().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 function cadastrar(req, res) {
     var id_user = req.body.userIDServer;
@@ -51,5 +59,6 @@ function cadastrar(req, res) {
 module.exports = {
     respostasCertas,
     notaAnime,
+    tiposTitas,
     cadastrar
 }

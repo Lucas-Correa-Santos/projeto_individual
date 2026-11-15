@@ -41,6 +41,7 @@ CREATE TABLE quiz(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
+SELECT AVG(nota) FROM avaliacao;
 INSERT INTO quiz
 (fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
 VALUES
@@ -84,7 +85,7 @@ CREATE TABLE avaliacao(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
-SELECT COUNT(aspecto) FROM avaliacao
+SELECT fk_usuario, COUNT(aspecto) FROM avaliacao
 GROUP BY fk_usuario;
 
 INSERT INTO avaliacao
@@ -206,5 +207,19 @@ ORDER BY
     END;
     
 -- SELECT TIPO DE TITANS ESCOLHIDOS
-SELECT  
-	CASE 
+SELECT
+    tipo_tita,
+    COUNT(*) AS quantidade
+FROM usuario
+GROUP BY tipo_tita
+ORDER BY quantidade DESC;
+
+
+-- SELECT DO TEMA MAIS ESCOLHIDO
+SELECT
+    aspecto,
+    COUNT(*) AS quantidade
+FROM avaliacao
+GROUP BY aspecto
+ORDER BY quantidade DESC
+LIMIT 1;

@@ -2,11 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/imgs/tita_de_ataque.jpg" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Renomeei o nome do site de AquaTech para Shingeki -->
     <title>Shingeki | Dashboards</title>
 
 
@@ -64,10 +63,7 @@
 
             <!-- Título -->
             <div class="dashboard-topo">
-                <div>
                     <h1>Dashboard</h1>
-                    <p>Acompanhe algumas informações sobre o anime.</p>
-                </div>
             </div>
 
 
@@ -111,7 +107,6 @@
             <!-- Área dos gráficos -->
             <div class="dashboard-graficos">
 
-                <!-- Gráfico 1 -->
                 <div class="grafico-card">
 
                     <div class="grafico-area">
@@ -120,14 +115,17 @@
 
                 </div>
 
-
-                <!-- Gráfico 2 -->
+                <!-- Card com dois gráficos empilhados: respostasCertas (barra) e tiposTitas (barra abaixo) -->
                 <div class="grafico-card">
-
                     <div class="grafico-area">
-                        <canvas id="respostasCertas"></canvas>
+                        <div style="width:100%;">
+                            <canvas id="respostasCertas"></canvas>
+                        </div>
+                        <!-- espaço entre os gráficos -->
+                        <div style="width:100%; margin-top:18px;">
+                            <canvas id="tiposTitas"></canvas>
+                        </div>
                     </div>
-
                 </div>
 
             </div>
@@ -145,7 +143,7 @@
 
     // let proximaAtualizacao;
 
-    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); // Carregar os dados do gráfico
+    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); tiposTitasGrafico(); // Carregar os dados do gráfico
 
     function respostasCertasGrafico() {
 
@@ -165,6 +163,73 @@
             });
     }
 
+    // Função para obter dados dos tipos de titãs mais escolhidos
+    function tiposTitasGrafico() {
+
+        fetch(`/avaliacao/grafico/tiposTitas`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos (tiposTitas): ${JSON.stringify(resposta)}`);
+                    // resposta já vem na ordem desejada pelo banco (quantidade desc)
+                    plotarGraficoTiposTitas(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API (tiposTitas)');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico tiposTitas: ${error.message}`);
+            });
+    }
+
+    function plotarGraficoTiposTitas(resposta) {
+        console.log('plotando gráfico de tipos de titãs...');
+
+        let labels = [];
+        let dados = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Quantidade',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(199,52,52,0.8)',
+                        'rgba(139,37,37,0.8)'
+                    ],
+                    borderColor: 'rgb(199, 52, 52)'
+                }]
+        };
+
+        for (let i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            // dependendo do nome da coluna retornada pelo banco, ajustar abaixo
+            labels.push(registro.tipo_tita || registro.tipoTita || registro.Tipo_Tita || registro.Tipo);
+            dados.datasets[0].data.push(registro.quantidade || registro.Quantidade || registro.qtd);
+        }
+
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Tipos de titãs mais escolhidos',
+                        align: 'center',
+                        color: '#17191D',
+                    },
+                },
+                indexAxis: 'x'
+            }
+        };
+
+        // cria o gráfico na canvas tiposTitas
+        let myChart = new Chart(
+            document.getElementById(`tiposTitas`),
+            config
+        );
+    }
+
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
@@ -182,6 +247,10 @@
                 {
                     label: 'Quantidade',
                     data: [],
+                    backgroundColor: [
+                        'rgba(199,52,52,0.8)',
+                        'rgba(139,37,37,0.8)'
+                    ],
                     fill: false,
                     borderColor: 'rgb(199, 52, 52)',
                     tension: 0.1
@@ -216,6 +285,10 @@
                     title: {
                         display: true,                // habilita o título
                         text: 'Usuarios com mais respostas certas',    // texto do título (pode ser uma string ou variável)
+                        backgroundColor: [
+                        'rgba(199,52,52,0.8)',
+                        'rgba(139,37,37,0.8)'
+                        ],
                         align: 'center',              // 'start' | 'center' | 'end'
                         color: '#17191D',             // cor do título
                     },
@@ -368,6 +441,10 @@
                     title: {
                         display: true,                // habilita o título
                         text: 'Avaliações do anime',    // texto do título (pode ser uma string ou variável)
+                        backgroundColor: [
+                        'rgba(199,52,52,0.8)',
+                        'rgba(139,37,37,0.8)'
+                        ],
                         align: 'center',              // 'start' | 'center' | 'end'
                         color: '#17191D',             // cor do título
                     },

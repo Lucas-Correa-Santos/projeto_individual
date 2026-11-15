@@ -41,6 +41,19 @@ function respostasCertas() {
     return database.executar(instrucao);
 }
 
+function tiposTitas() {
+    var instrucao = `
+    SELECT
+        tipo_tita AS tipo_tita,
+        COUNT(*) AS quantidade
+    FROM usuario
+    GROUP BY tipo_tita
+    ORDER BY quantidade DESC;
+    `;
+    console.log("Executando a instrução SQL (tiposTitas): \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece_anime) {
     var instrucao = `
         INSERT INTO avaliacao (fk_usuario, aspecto, tema, nota, conhecia)
@@ -53,5 +66,6 @@ function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece
 module.exports = {
     cadastrar,
     notaAnime,
-    respostasCertas
+    respostasCertas,
+    tiposTitas
 };

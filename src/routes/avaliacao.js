@@ -18,6 +18,11 @@ router.get("/grafico/respostasCertas", function (req, res) {
     avaliacaoController.respostasCertas(req, res);
 });
 
+router.get("/grafico/tiposTitas", function (req, res) {
+    // retorna os tipos de titãs mais escolhidos (contagem por tipo_tita)
+    avaliacaoController.tiposTitas(req, res);
+});
+
 
 module.exports = router;
 

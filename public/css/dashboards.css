@@ -375,7 +375,7 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
+  border-right: 3px solid var(--cor-vermelho-batalha);
   /* sidebar: aço escuro */
   background-color: var(--cor-aco-escuro);
 }
@@ -395,7 +395,7 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: var(--cor-papiro);
 }
 
 .hello {
@@ -448,7 +448,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: var(--secondary-brand-color);
   color: white;
   border-radius: 10px;
   text-align: center;
@@ -790,7 +790,7 @@ canvas {
     width: 100%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -800,21 +800,12 @@ canvas {
 
     font-size: 32px;
 
-    color: var(--new-black);
-}
-
-
-.dashboard-topo p {
-    margin: 5px 0 0 0;
-
-    color: #777;
-
-    font-size: 16px;
+    color: var(--new-white);
 }
 
 
 /* =========================
-   KPIs
+  KPIs
 ========================= */
 
 .dashboard-kpis {
