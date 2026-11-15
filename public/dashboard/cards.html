@@ -132,7 +132,11 @@
 </body>
 
 <script>
-    const listaDeQuestoes = [
+    const bancoDeQuestoes = [
+
+    // ========================================
+    // QUESTÕES FÁCEIS
+    // ========================================
 
     {
         pergunta: "Qual é o nome do protagonista de Attack on Titan?",
@@ -140,7 +144,28 @@
         alternativaB: "Eren Yeager",
         alternativaC: "Levi Ackerman",
         alternativaD: "Jean Kirstein",
-        alternativaCorreta: "alternativaB"
+        alternativaCorreta: "alternativaB",
+        dificuldade: "facil"
+    },
+
+    {
+        pergunta: "Qual é o nome da amiga de infância de Eren?",
+        alternativaA: "Sasha Blouse",
+        alternativaB: "Historia Reiss",
+        alternativaC: "Mikasa Ackerman",
+        alternativaD: "Annie Leonhart",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "facil"
+    },
+
+    {
+        pergunta: "Qual é o nome do amigo de infância de Eren e Mikasa?",
+        alternativaA: "Armin Arlert",
+        alternativaB: "Jean Kirstein",
+        alternativaC: "Connie Springer",
+        alternativaD: "Reiner Braun",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "facil"
     },
 
     {
@@ -149,70 +174,33 @@
         alternativaB: "8",
         alternativaC: "9",
         alternativaD: "10",
-        alternativaCorreta: "alternativaC"
+        alternativaCorreta: "alternativaC",
+        dificuldade: "facil"
     },
 
     {
-        pergunta: "Quantos capítulos possui o mangá de Shingeki no Kyojin?",
-        alternativaA: "100",
-        alternativaB: "122",
-        alternativaC: "139",
-        alternativaD: "154",
-        alternativaCorreta: "alternativaC"
+        pergunta: "Qual personagem é conhecido como o soldado mais forte da humanidade?",
+        alternativaA: "Erwin Smith",
+        alternativaB: "Levi Ackerman",
+        alternativaC: "Eren Yeager",
+        alternativaD: "Jean Kirstein",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "facil"
     },
 
-    {
-        pergunta: "Qual personagem é conhecido por sua grande habilidade utilizando os equipamentos de movimentação?",
-        alternativaA: "Levi",
-        alternativaB: "Connie",
-        alternativaC: "Armin",
-        alternativaD: "Erwin",
-        alternativaCorreta: "alternativaA"
-    },
+
+    // ========================================
+    // QUESTÕES MÉDIAS
+    // ========================================
 
     {
-        pergunta: "Qual destes personagens faz parte do trio principal da história?",
-        alternativaA: "Reiner",
-        alternativaB: "Mikasa",
-        alternativaC: "Erwin",
-        alternativaD: "Hange",
-        alternativaCorreta: "alternativaB"
-    },
-
-    {
-        pergunta: "Qual é o nome do amigo de infância de Eren e Mikasa?",
-        alternativaA: "Armin",
-        alternativaB: "Jean",
-        alternativaC: "Connie",
-        alternativaD: "Floch",
-        alternativaCorreta: "alternativaA"
-    },
-
-    {
-        pergunta: "Qual destas opções representa um dos principais temas presentes em Shingeki no Kyojin?",
-        alternativaA: "Liberdade",
-        alternativaB: "Corrida de carros",
-        alternativaC: "Viagem espacial",
-        alternativaD: "Magia medieval",
-        alternativaCorreta: "alternativaA"
-    },
-
-    {
-        pergunta: "Qual personagem é conhecida por sua determinação em proteger as pessoas importantes para ela?",
-        alternativaA: "Sasha",
-        alternativaB: "Annie",
-        alternativaC: "Mikasa",
-        alternativaD: "Historia",
-        alternativaCorreta: "alternativaC"
-    },
-
-    {
-        pergunta: "Qual destes é um dos Nove Titãs?",
-        alternativaA: "Titã Colossal",
-        alternativaB: "Titã Gigante Supremo",
-        alternativaC: "Titã Vermelho",
-        alternativaD: "Titã Guerreiro",
-        alternativaCorreta: "alternativaA"
+        pergunta: "Qual é o nome da tropa responsável por realizar expedições além das muralhas?",
+        alternativaA: "Polícia Militar",
+        alternativaB: "Tropa de Exploração",
+        alternativaC: "Guarnição",
+        alternativaD: "Unidade Central",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "media"
     },
 
     {
@@ -221,7 +209,8 @@
         alternativaB: "Jean",
         alternativaC: "Connie",
         alternativaD: "Mikasa",
-        alternativaCorreta: "alternativaA"
+        alternativaCorreta: "alternativaA",
+        dificuldade: "media"
     },
 
     {
@@ -230,16 +219,48 @@
         alternativaB: "Ackerman",
         alternativaC: "Arlert",
         alternativaD: "Braun",
-        alternativaCorreta: "alternativaB"
+        alternativaCorreta: "alternativaB",
+        dificuldade: "media"
     },
 
     {
-        pergunta: "Qual personagem é conhecido por seu forte senso de liderança?",
-        alternativaA: "Erwin Smith",
-        alternativaB: "Sasha Blouse",
-        alternativaC: "Connie Springer",
-        alternativaD: "Marco Bott",
-        alternativaCorreta: "alternativaA"
+        pergunta: "Quem foi o comandante da Tropa de Exploração durante grande parte da história?",
+        alternativaA: "Levi Ackerman",
+        alternativaB: "Keith Shadis",
+        alternativaC: "Erwin Smith",
+        alternativaD: "Hange Zoë",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "media"
+    },
+
+    {
+        pergunta: "Qual destes Titãs é conhecido por seu tamanho gigantesco?",
+        alternativaA: "Titã Mandíbula",
+        alternativaB: "Titã Carroceiro",
+        alternativaC: "Titã Colossal",
+        alternativaD: "Titã Fêmea",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "media"
+    },
+
+    {
+        pergunta: "Qual é o sobrenome de Eren?",
+        alternativaA: "Ackerman",
+        alternativaB: "Braun",
+        alternativaC: "Yeager",
+        alternativaD: "Reiss",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "media"
+    },
+
+    {
+        pergunta: "Qual personagem é conhecida por seu grande apetite?",
+        alternativaA: "Sasha Blouse",
+        alternativaB: "Mikasa Ackerman",
+        alternativaC: "Annie Leonhart",
+        alternativaD: "Historia Reiss",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "media"
     },
 
     {
@@ -248,28 +269,194 @@
         alternativaB: "Mangá",
         alternativaC: "Jogo",
         alternativaD: "Série de livros",
-        alternativaCorreta: "alternativaB"
+        alternativaCorreta: "alternativaB",
+        dificuldade: "media"
     },
 
     {
-        pergunta: "Qual destes personagens faz parte da Tropa de Exploração em grande parte da história?",
-        alternativaA: "Levi",
-        alternativaB: "Gabi",
-        alternativaC: "Falco",
-        alternativaD: "Zeke",
-        alternativaCorreta: "alternativaA"
+        pergunta: "Qual destes personagens é um guerreiro de Marley?",
+        alternativaA: "Reiner Braun",
+        alternativaB: "Jean Kirstein",
+        alternativaC: "Connie Springer",
+        alternativaD: "Marco Bott",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "media"
     },
 
     {
-        pergunta: "Qual palavra representa fortemente um dos desejos mais importantes presentes na obra?",
-        alternativaA: "Riqueza",
-        alternativaB: "Liberdade",
-        alternativaC: "Fama",
-        alternativaD: "Poder",
-        alternativaCorreta: "alternativaB"
+        pergunta: "Quantos capítulos possui o mangá de Shingeki no Kyojin?",
+        alternativaA: "100",
+        alternativaB: "122",
+        alternativaC: "139",
+        alternativaD: "154",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "media"
+    },
+
+
+    // ========================================
+    // QUESTÕES DIFÍCEIS
+    // ========================================
+
+    {
+        pergunta: "Qual é o nome do distrito onde Eren cresceu?",
+        alternativaA: "Trost",
+        alternativaB: "Shiganshina",
+        alternativaC: "Stohess",
+        alternativaD: "Mitras",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual personagem possui uma grande habilidade de rastreamento através do olfato?",
+        alternativaA: "Miche Zacharius",
+        alternativaB: "Jean Kirstein",
+        alternativaC: "Connie Springer",
+        alternativaD: "Marco Bott",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual é o nome do pai de Historia Reiss?",
+        alternativaA: "Rod Reiss",
+        alternativaB: "Grisha Yeager",
+        alternativaC: "Kenny Ackerman",
+        alternativaD: "Uri Reiss",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual personagem liderava o 104º Corpo de Treinamento?",
+        alternativaA: "Keith Shadis",
+        alternativaB: "Erwin Smith",
+        alternativaC: "Nile Dok",
+        alternativaD: "Dot Pixis",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual Titã é conhecido por sua capacidade de carregar equipamentos por longas distâncias?",
+        alternativaA: "Titã de Ataque",
+        alternativaB: "Titã Carroceiro",
+        alternativaC: "Titã Mandíbula",
+        alternativaD: "Titã Fêmea",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual família representa a verdadeira linhagem real dentro das muralhas?",
+        alternativaA: "Ackerman",
+        alternativaB: "Reiss",
+        alternativaC: "Braun",
+        alternativaD: "Yeager",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual personagem é conhecido por possuir um forte senso de liderança e comandar a Tropa de Exploração?",
+        alternativaA: "Levi Ackerman",
+        alternativaB: "Erwin Smith",
+        alternativaC: "Jean Kirstein",
+        alternativaD: "Keith Shadis",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual dos Nove Titãs possui uma forte capacidade de endurecimento defensivo?",
+        alternativaA: "Titã Blindado",
+        alternativaB: "Titã Carroceiro",
+        alternativaC: "Titã Mandíbula",
+        alternativaD: "Titã Colossal",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual é o nome da capital localizada no centro das muralhas?",
+        alternativaA: "Trost",
+        alternativaB: "Shiganshina",
+        alternativaC: "Mitras",
+        alternativaD: "Stohess",
+        alternativaCorreta: "alternativaC",
+        dificuldade: "dificil"
+    },
+
+    {
+        pergunta: "Qual personagem ficou conhecido por sua investigação registrada em um relatório relacionado aos Titãs?",
+        alternativaA: "Ilse Langnar",
+        alternativaB: "Petra Ral",
+        alternativaC: "Nanaba",
+        alternativaD: "Rico Brzenska",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "dificil"
+    },
+
+
+    // ========================================
+    // QUESTÕES MUITO DIFÍCEIS
+    // ========================================
+
+    {
+        pergunta: "Qual destes personagens fazia parte da Polícia Militar e posteriormente assumiu um papel importante na história política dentro das muralhas?",
+        alternativaA: "Nile Dok",
+        alternativaB: "Miche Zacharius",
+        alternativaC: "Moblit Berner",
+        alternativaD: "Eld Jinn",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "muito_dificil"
+    },
+
+    {
+        pergunta: "Qual era o nome do distrito onde ficava localizado o governo central dentro das muralhas?",
+        alternativaA: "Trost",
+        alternativaB: "Mitras",
+        alternativaC: "Shiganshina",
+        alternativaD: "Stohess",
+        alternativaCorreta: "alternativaB",
+        dificuldade: "muito_dificil"
+    },
+
+    {
+        pergunta: "Qual personagem era responsável por auxiliar Hange Zoë em diversas pesquisas e operações?",
+        alternativaA: "Moblit Berner",
+        alternativaB: "Marco Bott",
+        alternativaC: "Eld Jinn",
+        alternativaD: "Gunther Schultz",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "muito_dificil"
+    },
+
+    {
+        pergunta: "Qual era o nome do antigo capitão conhecido por suas habilidades de rastreamento dentro da Tropa de Exploração?",
+        alternativaA: "Miche Zacharius",
+        alternativaB: "Kenny Ackerman",
+        alternativaC: "Nile Dok",
+        alternativaD: "Keith Shadis",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "muito_dificil"
+    },
+
+    {
+        pergunta: "Qual personagem era o comandante da Polícia Militar durante os acontecimentos políticos dentro das muralhas?",
+        alternativaA: "Nile Dok",
+        alternativaB: "Erwin Smith",
+        alternativaC: "Keith Shadis",
+        alternativaD: "Dot Pixis",
+        alternativaCorreta: "alternativaA",
+        dificuldade: "muito_dificil"
     }
 
 ]
+
+    // Lista que receberá apenas as 15 perguntas sorteadas para a tentativa atual
+    let listaDeQuestoes = []
 
     // variáveis globais    
     let numeroDaQuestaoAtual = 0
@@ -277,7 +464,7 @@
     let tentativaIncorreta = 0
     let certas = 0
     let erradas = 0
-    let quantidadeDeQuestoes = listaDeQuestoes.length
+    let quantidadeDeQuestoes = 0
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
     function onloadEsconder() {
@@ -285,39 +472,186 @@
         document.getElementById('jogo').style.display = "none"
     }
 
+    function embaralharPerguntas(lista) {
+
+    // Cria uma cópia da lista recebida.
+    // O operador ... evita alterar a lista original.
+    const listaEmbaralhada = [...lista]
+
+    // Embaralha os elementos da cópia utilizando Math.random()
+    listaEmbaralhada.sort(() => Math.random() - 0.5)
+
+    // Retorna a nova lista embaralhada
+    return listaEmbaralhada
+}
+
+function sortearPerguntasPorDificuldade() {
+
+    // Filtra apenas as perguntas fáceis
+    const faceis = bancoDeQuestoes.filter(
+        questao => questao.dificuldade === "facil"
+    )
+
+
+    // Filtra apenas as perguntas médias
+    const medias = bancoDeQuestoes.filter(
+        questao => questao.dificuldade === "media"
+    )
+
+
+    // Filtra apenas as perguntas difíceis
+    const dificeis = bancoDeQuestoes.filter(
+        questao => questao.dificuldade === "dificil"
+    )
+
+
+    // Filtra apenas as perguntas muito difíceis
+    const muitoDificeis = bancoDeQuestoes.filter(
+        questao => questao.dificuldade === "muito_dificil"
+    )
+
+
+    // Sorteia uma quantidade específica de cada dificuldade
+    const perguntasSorteadas = [
+
+        // Pega 3 perguntas fáceis
+        ...embaralharPerguntas(faceis).slice(0, 3),
+
+        // Pega 5 perguntas médias
+        ...embaralharPerguntas(medias).slice(0, 5),
+
+        // Pega 5 perguntas difíceis
+        ...embaralharPerguntas(dificeis).slice(0, 5),
+
+        // Pega 2 perguntas muito difíceis
+        ...embaralharPerguntas(muitoDificeis).slice(0, 2)
+
+    ]
+
+
+    // Embaralha novamente para as dificuldades
+    // não ficarem agrupadas em sequência
+    return embaralharPerguntas(perguntasSorteadas)
+
+}
+
     function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "flex"
-        document.getElementById('jogo').style.display = "flex"
-        document.getElementById('btnIniciarQuiz').style.display = "none"
-        document.getElementById('spanCertas').innerHTML = 0
-        document.getElementById('spanErradas').innerHTML = 0
 
-        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+    // Sorteia as perguntas equilibrando as dificuldades
+    listaDeQuestoes = sortearPerguntasPorDificuldade()
 
-        preencherHTMLcomQuestaoAtual(0)
 
-        btnSubmeter.style.display = "block"
-        btnProx.style.display = "block"
-        btnTentarNovamente.style.display = "none"
+    // Define a quantidade de perguntas usando o tamanho da lista sorteada
+    quantidadeDeQuestoes = listaDeQuestoes.length
 
-        btnSubmeter.disabled = false
-        btnProx.disabled = true
-        btnTentarNovamente.disabled = true
-    }
+
+    // Reinicia as variáveis do quiz
+    numeroDaQuestaoAtual = 0
+
+    pontuacaoFinal = 0
+
+    tentativaIncorreta = 0
+
+    certas = 0
+
+    erradas = 0
+
+
+    // Exibe a área da pontuação
+    document.getElementById('pontuacao').style.display = "flex"
+
+
+    // Exibe a área do jogo
+    document.getElementById('jogo').style.display = "flex"
+
+
+    // Esconde o botão de iniciar
+    document.getElementById('btnIniciarQuiz').style.display = "none"
+
+
+    // Atualiza os contadores na tela
+    document.getElementById('spanCertas').innerHTML = 0
+
+    document.getElementById('spanErradas').innerHTML = 0
+
+
+    // Mostra a quantidade total de perguntas
+    document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+
+    // Garante que os elementos do quiz estejam visíveis
+    document.getElementById('infoQuestao').style.display = "block"
+
+    document.getElementById('perguntaDaQuestaoAtual').style.display = "block"
+
+    document.getElementById('infoAlternativas').style.display = "block"
+
+    document.getElementById('opcoes').style.display = "flex"
+
+
+    // Exibe a primeira pergunta da lista sorteada
+    preencherHTMLcomQuestaoAtual(0)
+
+
+    // Configuração inicial dos botões
+    btnSubmeter.style.display = "block"
+
+    btnProx.style.display = "block"
+
+    btnTentarNovamente.style.display = "none"
+
+
+    // O usuário pode enviar uma resposta
+    btnSubmeter.disabled = false
+
+
+    // O botão de próxima pergunta começa bloqueado
+    btnProx.disabled = true
+
+
+    // O botão de tentar novamente começa bloqueado
+    btnTentarNovamente.disabled = true
+
+}
 
     function preencherHTMLcomQuestaoAtual(index) {
-        habilitarAlternativas(true)
-        const questaoAtual = listaDeQuestoes[index]
-        numeroDaQuestaoAtual = index
-        console.log("questaoAtual")
-        console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
-        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
-        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
-        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
-        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
-        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
-    }
+
+    // Habilita novamente as alternativas
+    habilitarAlternativas(true)
+
+
+    // Busca a pergunta sorteada na posição atual
+    const questaoAtual = listaDeQuestoes[index]
+
+
+    // Atualiza o número da questão atual
+    numeroDaQuestaoAtual = index
+
+
+    // Mostra o número correto para o usuário
+    document.getElementById("spanNumeroDaQuestaoAtual").innerHTML =
+        Number(index) + 1
+
+
+    // Preenche a pergunta
+    document.getElementById("spanQuestaoExibida").innerHTML =
+        questaoAtual.pergunta
+
+
+    // Preenche as quatro alternativas
+    document.getElementById("labelOpcaoUm").innerHTML =
+        questaoAtual.alternativaA
+
+    document.getElementById("labelOpcaoDois").innerHTML =
+        questaoAtual.alternativaB
+
+    document.getElementById("labelOpcaoTres").innerHTML =
+        questaoAtual.alternativaC
+
+    document.getElementById("labelOpcaoQuatro").innerHTML =
+        questaoAtual.alternativaD
+
+}
 
     function submeter() {
         const options = document.getElementsByName("option"); // recupera alternativas no html
@@ -353,20 +687,38 @@
     }
 
     function avancar() {
-        btnProx.disabled = true
-        btnSubmeter.disabled = false
 
-        desmarcarRadioButtons()
+    // Bloqueia o botão de próxima pergunta até o usuário responder novamente
+    btnProx.disabled = true
 
-        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else {
-            finalizarJogo()
-        }
-        limparCoresBackgroundOpcoes()
-    }  
+
+    // Libera novamente o botão para confirmar uma resposta
+    btnSubmeter.disabled = false
+
+
+    // Remove a seleção da questão anterior
+    desmarcarRadioButtons()
+
+
+    // Remove as cores de resposta certa e errada
+    limparCoresBackgroundOpcoes()
+
+
+    // Verifica se ainda existem perguntas na lista
+    if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
+
+        // Exibe a próxima pergunta
+        preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+
+    } else {
+
+        // Se não existem mais perguntas, finaliza o quiz
+        finalizarJogo()
+
+    }
+
+}
+
 
     function tentarNovamente() {
         // atualiza a página

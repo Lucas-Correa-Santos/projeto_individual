@@ -172,6 +172,28 @@ button{
   font-size: 17px;
 }
 
+/* Ativa rolagem suave para âncoras na mesma página.
+   Isso faz com que ao clicar em links com href="#id" a tela
+   desça suavemente até o destino.
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+/* Efeito de hover para botões das páginas index e valores
+   Altera a cor de fundo e a borda quando o usuário passar o mouse.
+   Foi mantido o padrão de cores definido no AGENTS.md.
+*/
+button, .btn, .botao {
+  transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+
+button:hover, .btn:hover, .botao:hover {
+  background-color: var(--cor-strong-red); /* tom alternativo de vermelho ao passar o mouse */
+  border-color: var(--cor-papiro);
+  color: var(--cor-papiro);
+}
+
 .banner .container {
   justify-content: center;
   align-items: center;
@@ -1155,7 +1177,7 @@ input {
 
     letter-spacing: 2px;
 
-    color: var(--cor-verde-oliva);
+    color: var(-);
 }
 
 
