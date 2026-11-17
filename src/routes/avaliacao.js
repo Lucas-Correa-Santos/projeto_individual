@@ -23,6 +23,10 @@ router.get("/grafico/tiposTitas", function (req, res) {
     avaliacaoController.tiposTitas(req, res);
 });
 
+router.get("/grafico/mediaAvaliacoes", function (req, res) {
+    // retorna a media de avaliação geral do anime
+    avaliacaoController.mediaAvaliacoes(req, res);
+});
 
 module.exports = router;
 

@@ -820,9 +820,9 @@ canvas {
 .kpi-card {
     flex: 1;
 
-    min-height: 100px;
+    min-height: 70px;
 
-    padding: 12px 15px;
+    padding: 0px 10px;
 
     box-sizing: border-box;
 
@@ -845,8 +845,6 @@ canvas {
 .kpi-info {
     display: flex;
     flex-direction: column;
-
-    gap: 3px;
 }
 
 

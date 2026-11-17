@@ -63,7 +63,7 @@
 
             <!-- Título -->
             <div class="dashboard-topo">
-                    <h1>Dashboard</h1>
+                <h1>Dashboard</h1>
             </div>
 
 
@@ -88,8 +88,8 @@
 
                 <div class="kpi-card">
                     <div class="kpi-info">
-                        <span>Média de avaliação</span>
-                        <h2>--</h2>
+                        <h5>Média de avaliação do anime</h5>
+                        <p id="mediaAvaliacoes"></p>
                     </div>
                 </div>
 
@@ -139,11 +139,13 @@
 </html>
 
 <script>
+    const b_usuario = document.getElementById("b_usuario");
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
 
     // let proximaAtualizacao;
 
-    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); tiposTitasGrafico(); // Carregar os dados do gráfico
+    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); tiposTitasGrafico(); mediaAvaliacoes(); // Carregar os dados do gráfico
 
     function respostasCertasGrafico() {
 
@@ -163,301 +165,323 @@
             });
     }
 
-    // Função para obter dados dos tipos de titãs mais escolhidos
-    function tiposTitasGrafico() {
+    function mediaAvaliacoes() {
 
-        fetch(`/avaliacao/grafico/tiposTitas`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos (tiposTitas): ${JSON.stringify(resposta)}`);
-                    // resposta já vem na ordem desejada pelo banco (quantidade desc)
-                    plotarGraficoTiposTitas(resposta);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API (tiposTitas)');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico tiposTitas: ${error.message}`);
+        fetch(`/avaliacao/grafico/mediaAvaliacoes`, { cache: 'no-store' })
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log('Dados recebidos (mediaAvaliacoes):', resposta);
+                // Se 'resposta' for um Array (ex: [{ media: 8.5 }]), pegue o primeiro item:
+                const dados = Array.isArray(resposta) ? resposta[0] : resposta;
+                // Usa ?. para evitar erro caso venha vazio do banco
+                const valorMedia = dados.media ?? dados['Média de avaliação do anime'] ?? 'Sem avaliações';
+                document.getElementById("mediaAvaliacoes").textContent = valorMedia;
             });
-    }
-
-    function plotarGraficoTiposTitas(resposta) {
-        console.log('plotando gráfico de tipos de titãs...');
-
-        let labels = [];
-        let dados = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Quantidade',
-                    data: [],
-                    backgroundColor: [
-                        'rgba(199,52,52,0.8)',
-                        'rgba(139,37,37,0.8)'
-                    ],
-                    borderColor: 'rgb(199, 52, 52)'
-                }]
-        };
-
-        for (let i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            // dependendo do nome da coluna retornada pelo banco, ajustar abaixo
-            labels.push(registro.tipo_tita || registro.tipoTita || registro.Tipo_Tita || registro.Tipo);
-            dados.datasets[0].data.push(registro.quantidade || registro.Quantidade || registro.qtd);
         }
-
-        const config = {
-            type: 'bar',
-            data: dados,
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Tipos de titãs mais escolhidos',
-                        align: 'center',
-                        color: '#17191D',
-                    },
-                },
-                indexAxis: 'x'
-            }
-        };
-
-        // cria o gráfico na canvas tiposTitas
-        let myChart = new Chart(
-            document.getElementById(`tiposTitas`),
-            config
-        );
+    })
+    .catch(function (erro) {
+        console.error('Erro na requisição:', erro);
+    });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGraficorespostasCertas(resposta) {
+            // Função para obter dados dos tipos de titãs mais escolhidos
+            function tiposTitasGrafico() {
 
-        console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Quantidade',
-                    data: [],
-                    backgroundColor: [
-                        'rgba(199,52,52,0.8)',
-                        'rgba(139,37,37,0.8)'
-                    ],
-                    fill: false,
-                    borderColor: 'rgb(199, 52, 52)',
-                    tension: 0.1
-                }]
-        };
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (let i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.Nome);
-            dados.datasets[0].data.push(registro.Respostas_Certas);
-        }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'bar',
-            data: dados,
-            options: {
-                plugins: {
-                    title: {
-                        display: true,                // habilita o título
-                        text: 'Usuarios com mais respostas certas',    // texto do título (pode ser uma string ou variável)
-                        backgroundColor: [
-                        'rgba(199,52,52,0.8)',
-                        'rgba(139,37,37,0.8)'
-                        ],
-                        align: 'center',              // 'start' | 'center' | 'end'
-                        color: '#17191D',             // cor do título
-                    },
-                },
+                fetch(`/avaliacao/grafico/tiposTitas`, { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (resposta) {
+                            console.log(`Dados recebidos (tiposTitas): ${JSON.stringify(resposta)}`);
+                            // resposta já vem na ordem desejada pelo banco (quantidade desc)
+                            plotarGraficoTiposTitas(resposta);
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API (tiposTitas)');
+                    }
+                })
+                    .catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico tiposTitas: ${error.message}`);
+                    });
             }
-        };
 
-    // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(
-        document.getElementById(`respostasCertas`),
-        config
-    );
-    }
+            function plotarGraficoTiposTitas(resposta) {
+                console.log('plotando gráfico de tipos de titãs...');
 
+                let labels = [];
+                let dados = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Quantidade',
+                            data: [],
+                            backgroundColor: [
+                                'rgba(199,52,52,0.8)',
+                                'rgba(139,37,37,0.8)'
+                            ],
+                            borderColor: 'rgb(199, 52, 52)'
+                        }]
+                };
 
-    // // function notaAnime() {
-    // //     var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-    // //     aquarios.forEach(item => {
-    // //         document.getElementById("btnAquario").innerHTML += `
-    // //         <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-    // //         `
+                for (let i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+                    // dependendo do nome da coluna retornada pelo banco, ajustar abaixo
+                    labels.push(registro.tipo_tita || registro.tipoTita || registro.Tipo_Tita || registro.Tipo);
+                    dados.datasets[0].data.push(registro.quantidade || registro.Quantidade || registro.qtd);
+                }
 
-    // //         document.getElementById("graficos").innerHTML += `
-    // //             <div id="grafico${item.id}" class="display-none">
-    // //                 <h3 class="tituloGraficos">
-    // //                     <span id="tituloAquario${item.id}">${item.descricao}</span>
-    // //                 </h3>
-    // //                 <div class="graph">
-    // //                     <canvas id="myChartCanvas${item.id}"></canvas>
-    // //                 </div>
-    // //                 <div class="label-captura">
-    // //                     <p id="avisoCaptura${item.id}" style="color: white"></p>
-    // //                 </div>
-    // //             </div>
-    // //         `
+                const config = {
+                    type: 'bar',
+                    data: dados,
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Tipos de titãs mais escolhidos',
+                                align: 'center',
+                                color: '#17191D',
+                            },
+                        },
+                        indexAxis: 'x'
+                    }
+                };
 
-    // //         obterDadosGrafico(item.id)
-    // //     });
-
-    // //     if (aquarios.length > 0) {
-    // //         exibirAquario(aquarios[0].id)
-    // //     }
-    // // }
-
-    // function alterarTitulo(idAquario) {
-    //     var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-    //     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-    //     tituloAquario.innerHTML = "Últimas medidas do <span style='color: #e6005a'>" + descricao + "</span>"
-    // }
-
-    // function exibirAquario(idAquario) {
-    //     let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-    //     for (i = 0; i < todosOsGraficos.length; i++) {
-    //         // exibindo - ou não - o gráfico
-    //         if (todosOsGraficos[i].id != idAquario) {
-    //             let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-    //             if (elementoAtual.classList.contains("display-block")) {
-    //                 elementoAtual.classList.remove("display-block")
-    //             }
-    //             elementoAtual.classList.add("display-none")
-
-    //             // alterando estilo do botão
-    //             let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-    //             if (btnAtual.classList.contains("btn-pink")) {
-    //                 btnAtual.classList.remove("btn-pink")
-    //             }
-    //             btnAtual.classList.add("btn-white")
-    //         }
-    //     }
-
-    //     // exibindo - ou não - o gráfico
-    //     let graficoExibir = document.getElementById(`grafico${idAquario}`)
-    //     graficoExibir.classList.remove("display-none")
-    //     graficoExibir.classList.add("display-block")
-
-    //     // alterando estilo do botão
-    //     let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-    //     btnExibir.classList.remove("btn-white")
-    //     btnExibir.classList.add("btn-pink")
-    // }
-
-
-    function notaAnimeGrafico() {
-
-        fetch(`/avaliacao/grafico/notaAnime`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-                    plotarGraficoNotaAnime(resposta);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                // cria o gráfico na canvas tiposTitas
+                let myChart = new Chart(
+                    document.getElementById(`tiposTitas`),
+                    config
+                );
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGraficoNotaAnime(resposta) {
+            // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+            // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+            // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+            function plotarGraficorespostasCertas(resposta) {
 
-        console.log('iniciando plotagem do gráfico...');
+                console.log('iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+                // Criando estrutura para plotar gráfico - labels
+                let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Quantidade',
-                    data: [],
-                    fill: false,
-                    borderColor: 'rgb(199, 52, 52)',
-                    tension: 0.1
-                }]
-        };
+                // Criando estrutura para plotar gráfico - dados
+                let dados = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Quantidade',
+                            data: [],
+                            backgroundColor: [
+                                'rgba(199,52,52,0.8)',
+                                'rgba(139,37,37,0.8)'
+                            ],
+                            fill: false,
+                            borderColor: 'rgb(199, 52, 52)',
+                            tension: 0.1
+                        }]
+                };
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+                console.log('----------------------------------------------')
+                console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+                console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (let i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.classificacao);
-            dados.datasets[0].data.push(registro.quantidade);
-        }
+                // Inserindo valores recebidos em estrutura para plotar o gráfico
+                for (let i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+                    labels.push(registro.Nome);
+                    dados.datasets[0].data.push(registro.Respostas_Certas);
+                }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+                console.log('----------------------------------------------')
+                console.log('O gráfico será plotado com os respectivos valores:')
+                console.log('Labels:')
+                console.log(labels)
+                console.log('Dados:')
+                console.log(dados.datasets)
+                console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'pie',
-            data: dados,
-            options: {
-                plugins: {
-                    title: {
-                        display: true,                // habilita o título
-                        text: 'Avaliações do anime',    // texto do título (pode ser uma string ou variável)
-                        backgroundColor: [
-                        'rgba(199,52,52,0.8)',
-                        'rgba(139,37,37,0.8)'
-                        ],
-                        align: 'center',              // 'start' | 'center' | 'end'
-                        color: '#17191D',             // cor do título
-                    },
-                },
+                // Criando estrutura para plotar gráfico - config
+                const config = {
+                    type: 'bar',
+                    data: dados,
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,                // habilita o título
+                                text: 'Usuarios com mais respostas certas',    // texto do título (pode ser uma string ou variável)
+                                backgroundColor: [
+                                    'rgba(199,52,52,0.8)',
+                                    'rgba(139,37,37,0.8)'
+                                ],
+                                align: 'center',              // 'start' | 'center' | 'end'
+                                color: '#17191D',             // cor do título
+                            },
+                        },
+                    }
+                };
+
+                // Adicionando gráfico criado em div na tela
+                let myChart = new Chart(
+                    document.getElementById(`respostasCertas`),
+                    config
+                );
             }
-        };
 
-    // Adicionando gráfico criado em div na tela
-    let myChart = new Chart(
-        document.getElementById(`notaAnime`),
-        config
-    );
-    }
+
+
+
+            // // function notaAnime() {
+            // //     var aquarios = JSON.parse(sessionStorage.AQUARIOS);
+            // //     aquarios.forEach(item => {
+            // //         document.getElementById("btnAquario").innerHTML += `
+            // //         <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
+            // //         `
+
+            // //         document.getElementById("graficos").innerHTML += `
+            // //             <div id="grafico${item.id}" class="display-none">
+            // //                 <h3 class="tituloGraficos">
+            // //                     <span id="tituloAquario${item.id}">${item.descricao}</span>
+            // //                 </h3>
+            // //                 <div class="graph">
+            // //                     <canvas id="myChartCanvas${item.id}"></canvas>
+            // //                 </div>
+            // //                 <div class="label-captura">
+            // //                     <p id="avisoCaptura${item.id}" style="color: white"></p>
+            // //                 </div>
+            // //             </div>
+            // //         `
+
+            // //         obterDadosGrafico(item.id)
+            // //     });
+
+            // //     if (aquarios.length > 0) {
+            // //         exibirAquario(aquarios[0].id)
+            // //     }
+            // // }
+
+            // function alterarTitulo(idAquario) {
+            //     var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
+            //     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
+            //     tituloAquario.innerHTML = "Últimas medidas do <span style='color: #e6005a'>" + descricao + "</span>"
+            // }
+
+            // function exibirAquario(idAquario) {
+            //     let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+
+            //     for (i = 0; i < todosOsGraficos.length; i++) {
+            //         // exibindo - ou não - o gráfico
+            //         if (todosOsGraficos[i].id != idAquario) {
+            //             let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
+            //             if (elementoAtual.classList.contains("display-block")) {
+            //                 elementoAtual.classList.remove("display-block")
+            //             }
+            //             elementoAtual.classList.add("display-none")
+
+            //             // alterando estilo do botão
+            //             let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+            //             if (btnAtual.classList.contains("btn-pink")) {
+            //                 btnAtual.classList.remove("btn-pink")
+            //             }
+            //             btnAtual.classList.add("btn-white")
+            //         }
+            //     }
+
+            //     // exibindo - ou não - o gráfico
+            //     let graficoExibir = document.getElementById(`grafico${idAquario}`)
+            //     graficoExibir.classList.remove("display-none")
+            //     graficoExibir.classList.add("display-block")
+
+            //     // alterando estilo do botão
+            //     let btnExibir = document.getElementById(`btnAquario${idAquario}`)
+            //     btnExibir.classList.remove("btn-white")
+            //     btnExibir.classList.add("btn-pink")
+            // }
+
+
+            function notaAnimeGrafico() {
+
+                fetch(`/avaliacao/grafico/notaAnime`, { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (resposta) {
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                            resposta.reverse();
+                            plotarGraficoNotaAnime(resposta);
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
+                    .catch(function (error) {
+                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                    });
+            }
+
+            // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+            // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+            // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+            function plotarGraficoNotaAnime(resposta) {
+
+                console.log('iniciando plotagem do gráfico...');
+
+                // Criando estrutura para plotar gráfico - labels
+                let labels = [];
+
+                // Criando estrutura para plotar gráfico - dados
+                let dados = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Quantidade',
+                            data: [],
+                            fill: false,
+                            borderColor: 'rgb(199, 52, 52)',
+                            tension: 0.1
+                        }]
+                };
+
+                console.log('----------------------------------------------')
+                console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+                console.log(resposta)
+
+                // Inserindo valores recebidos em estrutura para plotar o gráfico
+                for (let i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+                    labels.push(registro.classificacao);
+                    dados.datasets[0].data.push(registro.quantidade);
+                }
+
+                console.log('----------------------------------------------')
+                console.log('O gráfico será plotado com os respectivos valores:')
+                console.log('Labels:')
+                console.log(labels)
+                console.log('Dados:')
+                console.log(dados.datasets)
+                console.log('----------------------------------------------')
+
+                // Criando estrutura para plotar gráfico - config
+                const config = {
+                    type: 'pie',
+                    data: dados,
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,                // habilita o título
+                                text: 'Avaliações do anime',    // texto do título (pode ser uma string ou variável)
+                                backgroundColor: [
+                                    'rgba(199,52,52,0.8)',
+                                    'rgba(139,37,37,0.8)'
+                                ],
+                                align: 'center',              // 'start' | 'center' | 'end'
+                                color: '#17191D',             // cor do título
+                            },
+                        },
+                    }
+                };
+
+                // Adicionando gráfico criado em div na tela
+                let myChart = new Chart(
+                    document.getElementById(`notaAnime`),
+                    config
+                );
+            }
 
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,

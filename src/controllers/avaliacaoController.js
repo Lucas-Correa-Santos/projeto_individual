@@ -24,6 +24,16 @@ function tiposTitas(req, res) {
     }).catch(function(erro){
         res.status(500).json(erro.sqlMessage);
     })
+
+}
+
+function mediaAvaliacoes(req, res){
+    avaliacaoModel.mediaAvaliacoes().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+
 }
 
 
@@ -60,5 +70,6 @@ module.exports = {
     respostasCertas,
     notaAnime,
     tiposTitas,
+    mediaAvaliacoes,
     cadastrar
 }

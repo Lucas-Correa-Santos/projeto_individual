@@ -1,3 +1,4 @@
+
 var database = require("../database/config")
 
 function notaAnime() {
@@ -41,6 +42,14 @@ function respostasCertas() {
     return database.executar(instrucao);
 }
 
+function mediaAvaliacoes(){
+    var instrucao = `
+    SELECT ROUND(AVG(nota),2) AS media FROM avaliacao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function tiposTitas() {
     var instrucao = `
     SELECT
@@ -67,5 +76,6 @@ module.exports = {
     cadastrar,
     notaAnime,
     respostasCertas,
+    mediaAvaliacoes,
     tiposTitas
 };

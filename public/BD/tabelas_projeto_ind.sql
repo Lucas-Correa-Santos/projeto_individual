@@ -16,6 +16,8 @@ CREATE TABLE usuario(
         CHECK (tipo_usuario IN ('admin', 'padrao'))
 );
 
+SELECT id, username FROM usuario ORDER BY id ASC;
+
 SELECT 
     u.username AS Nome, 
     SUM(q.respostas_certas) AS Respostas_Certas 
@@ -24,12 +26,6 @@ INNER JOIN usuario u ON q.fk_usuario = u.id
 GROUP BY u.username
 ORDER BY Respostas_Certas DESC, u.username ASC
 LIMIT 8;
-
-/*
-SELECT u.username, COUNT(a.aspecto) FROM avaliacao AS a
-INNER JOIN usuario AS u ON a.fk_usuario = u.username
-GROUP BY u.username
-ORDER BY a.aspecto DESC, u.username ASC; */
 
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,6 +38,7 @@ CREATE TABLE quiz(
 );
 
 SELECT AVG(nota) FROM avaliacao;
+
 INSERT INTO quiz
 (fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
 VALUES
@@ -85,43 +82,17 @@ CREATE TABLE avaliacao(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
+
 SELECT fk_usuario, COUNT(aspecto) FROM avaliacao
 GROUP BY fk_usuario;
 
 INSERT INTO avaliacao
 (fk_usuario, aspecto, tema, nota, conhecia)
 VALUES
-(1, 'historia', 'liberdade', 5, 'sim_assisti'),
-(2, 'personagens', 'persistencia', 5, 'assistindo'),
-(3, 'animacao', 'preconceito', 4, 'nao_assisti'),
+(10, 'historia', 'liberdade', 5, 'sim_assisti'),
+(13, 'personagens', 'liberade', 4, 'assistindo'),
+(9, 'animacao', 'preconceito', 4, 'nao_assisti');
 
-(1, 'trilha_sonora', 'consequencias', 5, 'sim_assisti'),
-(2, 'batalhas', 'liberdade', 5, 'sim_assisti'),
-(3, 'misterios', 'perspectivas', 4, 'assistindo'),
-
-(1, 'reflexoes', 'relacoes', 4, 'sim_assisti'),
-(2, 'historia', 'consequencias', 5, 'assistindo'),
-(3, 'personagens', 'persistencia', 3, 'nao_assisti'),
-
-(1, 'animacao', 'liberdade', 5, 'sim_assisti'),
-(2, 'trilha_sonora', 'preconceito', 4, 'sim_assisti'),
-(3, 'batalhas', 'relacoes', 5, 'assistindo'),
-
-(1, 'misterios', 'perspectivas', 5, 'sim_assisti'),
-(2, 'reflexoes', 'consequencias', 5, 'sim_assisti'),
-(3, 'historia', 'liberdade', 4, 'nao_assisti'),
-
-(1, 'personagens', 'relacoes', 5, 'sim_assisti'),
-(2, 'animacao', 'persistencia', 2, 'assistindo'),
-(3, 'trilha_sonora', 'perspectivas', 4, 'nao_assisti'),
-
-(1, 'batalhas', 'liberdade', 5, 'sim_assisti'),
-(2, 'misterios', 'preconceito', 3, 'sim_assisti'),
-(3, 'reflexoes', 'consequencias', 3, 'assistindo'),
-
-(1, 'historia', 'perspectivas', 5, 'sim_assisti'),
-(2, 'personagens', 'relacoes', 4, 'assistindo'),
-(3, 'animacao', 'liberdade', 4, 'nao_assisti');
 
 INSERT INTO quiz
 (fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
