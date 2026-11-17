@@ -27,6 +27,34 @@ function tiposTitas(req, res) {
 
 }
 
+function temaFavorito(req, res) {
+    avaliacaoModel.temaFavorito().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+
+}
+
+function tentativasUser(req, res){
+    var idUser = req.query.userID;
+    if (!idUser) {
+        return res.status(400).json({ erro: "userID ausente" });
+    }
+
+    idUser = parseInt(idUser);
+    if (isNaN(idUser)) {
+        return res.status(400).json({ erro: "userID inválido" });
+    }
+
+    avaliacaoModel.tentativasUser(idUser).then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+
+}
+
 function mediaAvaliacoes(req, res){
     avaliacaoModel.mediaAvaliacoes().then(function(resultado){
         res.status(200).json(resultado);
@@ -71,5 +99,7 @@ module.exports = {
     notaAnime,
     tiposTitas,
     mediaAvaliacoes,
+    tentativasUser,
+    temaFavorito,
     cadastrar
 }

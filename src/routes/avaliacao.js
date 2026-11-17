@@ -28,5 +28,15 @@ router.get("/grafico/mediaAvaliacoes", function (req, res) {
     avaliacaoController.mediaAvaliacoes(req, res);
 });
 
+router.get("/grafico/tentativasUser", function (req, res) {
+    // retorna a media de avaliação geral do anime
+    avaliacaoController.tentativasUser(req, res);
+});
+
+router.get("/grafico/temaFavorito", function (req, res) {
+    // retorna a media de avaliação geral do anime
+    avaliacaoController.temaFavorito(req, res);
+});
+
 module.exports = router;
 

@@ -469,11 +469,11 @@ canvas {
 }
 
 .border-primary {
-    border: 3px solid var(--primary-brand-color);
+    border: 3px solid var(--new-gray);
 }
 
 .border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+    border: 3px solid var(--danger-dark);
 }
 
 .padding-8 {
@@ -547,7 +547,7 @@ canvas {
 }
 
 #btnIniciarQuiz:hover {
-    transform: scale(1.05);
+    transform: scale(1.20);
 }
 
 
@@ -810,7 +810,7 @@ canvas {
 
 .dashboard-kpis {
     width: 98.7%;
-
+  
     display: flex;
 
     gap: 15px;
@@ -820,15 +820,14 @@ canvas {
 .kpi-card {
     flex: 1;
 
-    min-height: 70px;
+    min-height: 90px;
 
-    padding: 0px 10px;
+    padding: 10px 10px;
 
     box-sizing: border-box;
 
     display: flex;
-
-    justify-content: space-between;
+  justify-content: center;
     align-items: center;
 
     border-radius: 8px;
@@ -845,13 +844,7 @@ canvas {
 .kpi-info {
     display: flex;
     flex-direction: column;
-}
-
-
-.kpi-info span {
-    font-size: 13px;
-
-    color: #777;
+    align-items: center;
 }
 
 
@@ -949,40 +942,28 @@ canvas {
   height: auto !important;
 }
 
-/* KPI 1 */
-.kpi-card:nth-child(1) {
-    background-color: #dbeafe;
-
-    border-left: 4px solid #2563eb;
-}
-
 
 /* KPI 2 */
-.kpi-card:nth-child(2) {
+.kpi-card:nth-child(1) {
     background-color: #dcfce7;
 
-    border-left: 4px solid #16a34a;
 }
 
 
 /* KPI 3 */
-.kpi-card:nth-child(3) {
+.kpi-card:nth-child(2) {
     background-color: #fef3c7;
-
-    border-left: 4px solid #d97706;
 }
 
 
 /* KPI 4 */
-.kpi-card:nth-child(4) {
+.kpi-card:nth-child(3) {
     background-color: #fce7f3;
-
-    border-left: 4px solid #db2777;
 }
 
 .kpi-icon {
     width: 35px;
-    height: 35px;
+    height: 25px;
 
     display: flex;
 

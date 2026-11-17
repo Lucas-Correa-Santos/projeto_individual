@@ -1,4 +1,3 @@
-
 var database = require("../database/config")
 
 function notaAnime() {
@@ -50,6 +49,26 @@ function mediaAvaliacoes(){
     return database.executar(instrucao);
 }
 
+function temaFavorito(){
+    var instrucao = `
+    SELECT aspecto, COUNT(*) AS quantidade
+    FROM avaliacao
+    GROUP BY aspecto
+    ORDER BY quantidade DESC
+    LIMIT 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function tentativasUser(id_user){
+    var instrucao = `
+    SELECT COUNT(*) AS tentativasUsuario FROM quiz WHERE fk_usuario = ${parseInt(id_user)};
+    `;
+    console.log("Executando a instrução SQL (tentativasUser): \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function tiposTitas() {
     var instrucao = `
     SELECT
@@ -77,5 +96,7 @@ module.exports = {
     notaAnime,
     respostasCertas,
     mediaAvaliacoes,
+    tentativasUser,
+    temaFavorito,
     tiposTitas
 };

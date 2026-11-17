@@ -25,7 +25,8 @@ FROM quiz q
 INNER JOIN usuario u ON q.fk_usuario = u.id
 GROUP BY u.username
 ORDER BY Respostas_Certas DESC, u.username ASC
-LIMIT 8;
+		LIMIT 8;
+
 
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,7 +38,7 @@ CREATE TABLE quiz(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
-SELECT AVG(nota) FROM avaliacao;
+SELECT ROUND(AVG(nota),2) FROM avaliacao;
 
 INSERT INTO quiz
 (fk_usuario, respostas_certas, respostas_erradas, pontuacao_final)
@@ -73,7 +74,7 @@ SELECT * FROM quiz;
 
 CREATE TABLE avaliacao(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    fk_usuario INT NOT NULL,
+    fk_usuario INT NOT NULL UNIQUE,
     aspecto VARCHAR(30) NOT NULL,
     tema VARCHAR(30) NOT NULL,
     nota INT NOT NULL,
@@ -82,16 +83,13 @@ CREATE TABLE avaliacao(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
-
-SELECT fk_usuario, COUNT(aspecto) FROM avaliacao
-GROUP BY fk_usuario;
+SELECT aspecto, COUNT(*) AS quantidade FROM avaliacao
+GROUP BY aspecto;
 
 INSERT INTO avaliacao
 (fk_usuario, aspecto, tema, nota, conhecia)
 VALUES
-(10, 'historia', 'liberdade', 5, 'sim_assisti'),
-(13, 'personagens', 'liberade', 4, 'assistindo'),
-(9, 'animacao', 'preconceito', 4, 'nao_assisti');
+(11, 'historia', 'liberdade', 5, 'sim_assisti');
 
 
 INSERT INTO quiz

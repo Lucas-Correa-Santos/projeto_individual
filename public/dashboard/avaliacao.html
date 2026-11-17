@@ -141,6 +141,7 @@
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
     function enviar() {
+
         let nota = select_nota.value;
         let aspecto = select_marcou.value;
         let tema = select_tema.value;
@@ -155,6 +156,9 @@
         if (nota == "" || aspecto == "" || tema == "" || conhecia == "") {
             alert("Preencha todos os campos!")
         } else {
+            confirm("Tem certeza que quer enviar essa avaliação? Você tem direito a apenas uma tentativa")
+            } if (confirm == true) {
+            
             console.log("Payload avaliacao:", {
                 notafinalServer: notafinalVar,
                 aspectoServer: aspectoVar,
@@ -177,6 +181,8 @@
                     userIDServer: userIDVar
                 }),
             })
-        }
+            } else {
+                alert("Tentativa cancelada")
+            }
     }
 </script>

@@ -72,32 +72,24 @@
 
                 <div class="kpi-card">
                     <div class="kpi-info">
-                        <span>Usuários cadastrados</span>
-                        <h2>--</h2>
+                        <span>Média de avaliação do anime</span>
+                        <h2 id="mediaAvaliacoes" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></h2>
                     </div>
-                </div>
+                </div> 
 
+                
 
                 <div class="kpi-card">
                     <div class="kpi-info">
-                        <span>Avaliações</span>
-                        <h2>--</h2>
+                        <span>Tópico mais marcante</span>
+                        <h2 id="temaFavorito"></h2>
                     </div>
                 </div>
 
-
                 <div class="kpi-card">
                     <div class="kpi-info">
-                        <h5>Média de avaliação do anime</h5>
-                        <p id="mediaAvaliacoes"></p>
-                    </div>
-                </div>
-
-
-                <div class="kpi-card">
-                    <div class="kpi-info">
-                        <span>Participações no quiz</span>
-                        <h2>--</h2>
+                        <span>Suas tentativas no quiz</span>
+                        <h2 id="tentativasUser" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></h2>
                     </div>
                 </div>
 
@@ -139,13 +131,12 @@
 </html>
 
 <script>
-    const b_usuario = document.getElementById("b_usuario");
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
 
     // let proximaAtualizacao;
 
-    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); tiposTitasGrafico(); mediaAvaliacoes(); // Carregar os dados do gráfico
+    window.onload = notaAnimeGrafico(); respostasCertasGrafico(); tiposTitasGrafico(); mediaAvaliacoes(); tentativasUser(); temaFavorito(); // Carregar os dados do gráfico
 
     function respostasCertasGrafico() {
 
@@ -166,7 +157,6 @@
     }
 
     function mediaAvaliacoes() {
-
         fetch(`/avaliacao/grafico/mediaAvaliacoes`, { cache: 'no-store' })
     .then(function (response) {
         if (response.ok) {
@@ -175,13 +165,62 @@
                 // Se 'resposta' for um Array (ex: [{ media: 8.5 }]), pegue o primeiro item:
                 const dados = Array.isArray(resposta) ? resposta[0] : resposta;
                 // Usa ?. para evitar erro caso venha vazio do banco
-                const valorMedia = dados.media ?? dados['Média de avaliação do anime'] ?? 'Sem avaliações';
+                const valorMedia = dados.media ?? dados['Suas tentativas no quiz'] ?? 'Sem avaliações';
                 document.getElementById("mediaAvaliacoes").textContent = valorMedia;
             });
         }
     })
     .catch(function (erro) {
         console.error('Erro na requisição:', erro);
+    });
+    }
+
+    function temaFavorito() {
+        fetch(`/avaliacao/grafico/temaFavorito`, { cache: 'no-store' })
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log('Dados recebidos (temaFavorito):', resposta);
+                const dados = Array.isArray(resposta) ? resposta[0] : resposta;
+                // Usa ?. para evitar erro caso venha vazio do banco
+                const tema = dados.media ?? dados['aspecto'] ?? 'Sem tema favorito';
+                document.getElementById("temaFavorito").textContent = tema;
+            });
+        }
+    })
+    .catch(function (erro) {
+        console.error('Erro na requisição:', erro);
+    });
+    }
+
+    function tentativasUser() {
+        // obter id do usuário da sessionStorage
+        const userId = sessionStorage.ID_USUARIO;
+        if (!userId) {
+            console.warn('Usuário não autenticado. Não foi possível obter tentativas.');
+            document.getElementById("tentativasUser").textContent = 'Sem tentativas';
+            return;
+        }
+
+        fetch(`/avaliacao/grafico/tentativasUser?userID=${userId}`, { cache: 'no-store' })
+    .then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log('Dados recebidos (tentativasUser):', resposta);
+                // Se 'resposta' for um Array (ex: [{ tentativasUsuario: 8 }]), pegue o primeiro item:
+                const dados = Array.isArray(resposta) ? resposta[0] : resposta;
+                // Usa ?? para evitar erro caso venha vazio do banco; aceita tanto tentativasUsuario quanto tentativas
+                const tentativasUsuario = dados?.tentativasUsuario ?? dados?.tentativas ?? 'Sem tentativas';
+                document.getElementById("tentativasUser").textContent = tentativasUsuario;
+            });
+        } else {
+            console.error('Resposta não OK ao buscar tentativas do usuário');
+            document.getElementById("tentativasUser").textContent = 'Sem tentativas';
+        }
+    })
+    .catch(function (erro) {
+        console.error('Erro na requisição:', erro);
+        document.getElementById("tentativasUser").textContent = 'Sem tentativas';
     });
     }
 
@@ -325,75 +364,6 @@
                 );
             }
 
-
-
-
-            // // function notaAnime() {
-            // //     var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-            // //     aquarios.forEach(item => {
-            // //         document.getElementById("btnAquario").innerHTML += `
-            // //         <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            // //         `
-
-            // //         document.getElementById("graficos").innerHTML += `
-            // //             <div id="grafico${item.id}" class="display-none">
-            // //                 <h3 class="tituloGraficos">
-            // //                     <span id="tituloAquario${item.id}">${item.descricao}</span>
-            // //                 </h3>
-            // //                 <div class="graph">
-            // //                     <canvas id="myChartCanvas${item.id}"></canvas>
-            // //                 </div>
-            // //                 <div class="label-captura">
-            // //                     <p id="avisoCaptura${item.id}" style="color: white"></p>
-            // //                 </div>
-            // //             </div>
-            // //         `
-
-            // //         obterDadosGrafico(item.id)
-            // //     });
-
-            // //     if (aquarios.length > 0) {
-            // //         exibirAquario(aquarios[0].id)
-            // //     }
-            // // }
-
-            // function alterarTitulo(idAquario) {
-            //     var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
-            //     var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
-            //     tituloAquario.innerHTML = "Últimas medidas do <span style='color: #e6005a'>" + descricao + "</span>"
-            // }
-
-            // function exibirAquario(idAquario) {
-            //     let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-            //     for (i = 0; i < todosOsGraficos.length; i++) {
-            //         // exibindo - ou não - o gráfico
-            //         if (todosOsGraficos[i].id != idAquario) {
-            //             let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-            //             if (elementoAtual.classList.contains("display-block")) {
-            //                 elementoAtual.classList.remove("display-block")
-            //             }
-            //             elementoAtual.classList.add("display-none")
-
-            //             // alterando estilo do botão
-            //             let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-            //             if (btnAtual.classList.contains("btn-pink")) {
-            //                 btnAtual.classList.remove("btn-pink")
-            //             }
-            //             btnAtual.classList.add("btn-white")
-            //         }
-            //     }
-
-            //     // exibindo - ou não - o gráfico
-            //     let graficoExibir = document.getElementById(`grafico${idAquario}`)
-            //     graficoExibir.classList.remove("display-none")
-            //     graficoExibir.classList.add("display-block")
-
-            //     // alterando estilo do botão
-            //     let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-            //     btnExibir.classList.remove("btn-white")
-            //     btnExibir.classList.add("btn-pink")
-            // }
 
 
             function notaAnimeGrafico() {
