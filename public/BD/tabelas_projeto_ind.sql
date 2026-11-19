@@ -83,8 +83,11 @@ CREATE TABLE avaliacao(
     FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
 );
 
-SELECT aspecto, COUNT(*) AS quantidade FROM avaliacao
-GROUP BY aspecto;
+SELECT aspecto, COUNT(*) AS quantidade
+FROM avaliacao
+GROUP BY aspecto
+ORDER BY quantidade DESC
+LIMIT 1;
 
 INSERT INTO avaliacao
 (fk_usuario, aspecto, tema, nota, conhecia)

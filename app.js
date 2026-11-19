@@ -20,6 +20,7 @@ var avisosRouter = require("./src/routes/avisos");
 var empresasRouter = require("./src/routes/empresas");
 var quizRouter = require("./src/routes/quiz");
 var avaliacaoRouter = require("./src/routes/avaliacao");
+var perfilRouter = require("./src/routes/perfil");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +33,7 @@ app.use("/avisos", avisosRouter);
 app.use("/empresas", empresasRouter);
 app.use("/quiz", quizRouter);
 app.use("/avaliacao", avaliacaoRouter);
+app.use("/perfil", perfilRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

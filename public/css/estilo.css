@@ -974,6 +974,7 @@ input {
 
 .titulo-titas {
     width: 80%;
+    
     text-align: center;
 
     margin-bottom: 50px;
@@ -982,6 +983,7 @@ input {
 
 .titulo-titas h1 {
     font-size: 38px;
+    
     margin: 0 0 15px 0;
 }
 
@@ -1398,8 +1400,6 @@ input {
     font-size: 13px;
 
     letter-spacing: 2px;
-
-    color: var(--cor-verde-oliva);
 }
 
 
@@ -1443,26 +1443,4 @@ input {
 
 .fechar-modal:hover {
     transform: scale(1.2);
-}
-
-@keyframes bell {
-  0% {
-    transform: rotate(25deg)
-  }
-
-  25% {
-    transform: rotate(-25deg)
-  }
-
-  50% {
-    transform: rotate(25deg)
-  }
-
-  75% {
-    transform: rotate(-25deg)
-  }
-
-  100% {
-    transform: rotate(25deg)
-  }
 }

@@ -30,6 +30,12 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
+            <div class="btn-nav-white">
+            <a href="perfil.html">
+                <h3>Meu Perfil</h3>
+            </a>
+            </div>
+
             <div class="btn-nav">
                 <h3>Quiz Attack On Titan</h3>
             </div>
@@ -132,6 +138,9 @@
 </body>
 
 <script>
+
+    b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
     const bancoDeQuestoes = [
 
     // ========================================
@@ -479,7 +488,7 @@
     const listaEmbaralhada = [...lista]
 
     // Embaralha os elementos da cópia utilizando Math.random()
-    listaEmbaralhada.sort(() => Math.random() - 0.5)
+    listaEmbaralhada.sort(() => Math.random())
 
     // Retorna a nova lista embaralhada
     return listaEmbaralhada

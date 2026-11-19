@@ -34,6 +34,12 @@
         </div>
 
         <div class="btn-nav-white">
+            <a href="perfil.html">
+                <h3>Meu Perfil</h3>
+            </a>
+        </div>
+
+        <div class="btn-nav-white">
             <a href="cards.html">
                 <h3>Quiz Attack on Titan</h3>
             </a>
@@ -140,8 +146,14 @@
 <script>
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
-    function enviar() {
+    function verificar(){
 
+        if(nota == true){
+            
+        }
+    }
+
+    function enviar() {
         let nota = select_nota.value;
         let aspecto = select_marcou.value;
         let tema = select_tema.value;
@@ -181,8 +193,9 @@
                     userIDServer: userIDVar
                 }),
             })
-            } else {
+            } else if(confirm == false) {
                 alert("Tentativa cancelada")
             }
+            verificar()
     }
 </script>

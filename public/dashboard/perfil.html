@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shingeki | Perfil</title>
+    <link rel="stylesheet" href="../css/dashboards.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/imgs/tita_de_ataque.jpg">
+</head>
+<body>
+
+    <div class="header-left">
+
+        <h1>Shingeki</h1>
+
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+
+        <div class="btn-nav">
+            <a href="perfil.html">
+                <h3>Meu Perfil</h3>
+            </a>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="cards.html">
+                <h3>Quiz Attack on Titan</h3>
+            </a>
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="avaliacao.html">
+                <h3>Avaliação do anime</h3>
+            </a>
+            
+        </div>
+
+        <div class="btn-nav-white">
+            <a href="./dashboard.html">
+                <h3>Gráficos</h3>
+            </a>
+        </div>
+
+
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+
+    </div>
+    <div class="dash-right">
+        <div class="dashboard-conteudo">
+            <div class="dashboard-topo">
+                <h1>Meu perfil</h1>
+            </div>
+
+            <div class="perfil">
+                <div class="card">
+                    <p class="nome-linha"><strong>Nome:</strong> <span id="usernamePerfil">-</span></p>
+                    <p class="email-linha"><strong>E-mail:</strong> <span id="emailPerfil">-</span></p>
+                    <p class="tita-linha"><strong>Titã favorito:</strong> <span id="tipoTitaPerfil">-</span></p>
+                    <p><strong>Data de cadastro:</strong> <span id="dtCadastroPerfil">-</span></p>
+                </div>
+            </div>
+            <br><br><br>
+
+            
+
+            <div class="perfil">
+                <div class="card avaliacao" id="avaliacaoCard">
+                    <p id="mensagemSemAvaliacao" style="display:none;">Nenhuma avaliação registrada.</p>
+                    <p><strong>Aspecto avaliado:</strong> <span id="aspectoAvaliacao">-</span></p>
+                    <p><strong>Tema escolhido:</strong> <span id="temaAvaliacao">-</span></p>
+                    <p><strong>Nota atribuída:</strong> <span id="notaAvaliacao">-</span></p>
+                    <p><strong>Já conhecia o anime?</strong> <span id="conheciaAvaliacao">-</span></p>
+                </div>
+            </div>
+
+            <div id="divErro" style="display:none; color:#8E302F; margin-top:12px;"></div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
+
+<script>
+        // Preencher nome do usuário no cabeçalho
+        b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
+
+        window.onload = carregarPerfil(); 
+
+        // Formata data ISO para DD/MM/AAAA
+        function formatarDataBR(isoString) {
+            if (!isoString) return "-";
+            var d = new Date(isoString);
+            if (isNaN(d.getTime())) return "-";
+            var dia = String(d.getDate()).padStart(2, '0');
+            var mes = String(d.getMonth() + 1).padStart(2, '0');
+            var ano = d.getFullYear();
+            return dia + '/' + mes + '/' + ano;
+        }
+
+        // Função principal: carregar os dados do perfil
+        function carregarPerfil() {
+            // validar sessão
+            var userId = sessionStorage.ID_USUARIO;
+            if (!userId) {
+                console.warn('Usuário não autenticado. Redirecionando para login.');
+                window.location = "../login.html";
+                return;
+            }
+
+            obterDadosPerfil(userId)
+            .then(function (json) {
+                montarPerfil(json);
+            })
+            .catch(function (erro) {
+                console.error('Erro ao obter perfil:', erro);
+                var divErro = document.getElementById('divErro');
+                divErro.style.display = 'block';
+                divErro.textContent = erro.sqlMessage || erro.mensagem || 'Não foi possível carregar os dados do perfil.';
+            });
+        }
+
+        function obterDadosPerfil(userId) {
+            return fetch(`/perfil?userID=${userId}`, { cache: 'no-store' })
+            .then(function (response) {
+                if (!response.ok) return response.json().then(function (err) { throw err; });
+                return response.json();
+            });
+        }
+
+        function montarPerfil(json) {
+            var usuario = json.usuario || {};
+            var avaliacao = json.avaliacao;
+
+            document.getElementById('usernamePerfil').textContent = usuario.username || '-';
+            document.getElementById('emailPerfil').textContent = usuario.email || '-';
+            document.getElementById('tipoTitaPerfil').textContent = usuario.tipo_tita || '-';
+            document.getElementById('dtCadastroPerfil').textContent = formatarDataBR(usuario.dt_cadastro);
+
+            if (!avaliacao) {
+                document.getElementById('mensagemSemAvaliacao').style.display = 'block';
+                document.getElementById('aspectoAvaliacao').textContent = '-';
+                document.getElementById('temaAvaliacao').textContent = '-';
+                document.getElementById('notaAvaliacao').textContent = '-';
+                document.getElementById('conheciaAvaliacao').textContent = '-';
+            } else {
+                document.getElementById('mensagemSemAvaliacao').style.display = 'none';
+                document.getElementById('aspectoAvaliacao').textContent = avaliacao.aspecto || '-';
+                document.getElementById('temaAvaliacao').textContent = avaliacao.tema || '-';
+                document.getElementById('notaAvaliacao').textContent = avaliacao.nota ?? '-';
+                document.getElementById('conheciaAvaliacao').textContent = avaliacao.conhecia || '-';
+            }
+        }
+
+        // Carregar perfil ao carregar a página
+        // window.onload = function () {
+        //     carregarPerfil();
+        // };
+    </script>
