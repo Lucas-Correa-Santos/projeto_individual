@@ -247,23 +247,153 @@ button:hover, .btn:hover, .botao:hover {
 
 /* FOOTER */
 
+
+/* =========================
+        FOOTER
+========================= */
+
 .footer {
-  /* footer usa o strong-red como cor de fundo */
-  background-color: var(--cor-strong-red);
-  height: 100px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
+    background-color: #171717;
+    color: var(--cor-papiro);
+
+    width: 100%;
+    height: auto;
+
+    padding: 40px 8% 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.footer .container {
-  justify-content: center;
-  text-align: center;
+/* Área principal */
+.footer-conteudo {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 60px;
 }
+
+/* Identidade do projeto */
+.footer-identidade {
+    flex: 1;
+    max-width: 450px;
+}
+
+.footer-identidade h2 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 26px;
+    margin: 0 0 15px;
+}
+
+.footer-identidade p {
+    color: #aaa39a;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Área das ODS */
+.footer-ods {
+    flex: 1;
+    max-width: 650px;
+}
+
+.footer-ods h3 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    margin: 0 0 20px;
+}
+
+/* Imagens das ODS */
+.ods-lista {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ods-lista img {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+    display: block;
+
+    transition: transform 0.3s ease;
+}
+
+.ods-lista img:hover {
+    transform: translateY(-5px);
+}
+
+/* Linha inferior */
+.footer-final {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding-top: 15px;
+
+    border-top: 1px solid #383838;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #89847d;
+    font-size: 13px;
+}
+
+.footer-final p {
+    margin: 0;
+}
+
 
 .footer .container .version {
   font-size: 12px;
 }
+
+
+/* =========================
+   FOOTER LOGIN E CADASTRO
+========================= */
+
+.footer-autenticacao {
+    width: 100%;
+    min-height: 85px;
+    height: auto;
+
+    padding: 20px 8%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #171717;
+    color: var(--cor-papiro);
+}
+
+/* Mensagem centralizada */
+.footer-mensagem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-mensagem h4 {
+    margin: 0;
+    max-width: 700px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
 
 /* LOGIN */
 
@@ -1444,3 +1574,4 @@ input {
 .fechar-modal:hover {
     transform: scale(1.2);
 }
+

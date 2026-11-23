@@ -827,16 +827,20 @@ canvas {
     box-sizing: border-box;
 
     display: flex;
-  justify-content: center;
+
+    justify-content: center;
+    
     align-items: center;
 
     border-radius: 8px;
 
     transition: 0.3s;
+
+    cursor:auto;
 }
 
 
-.kpi-card:hover {
+.kpi-card:hover {  
     transform: translateY(-5px);
 }
 
