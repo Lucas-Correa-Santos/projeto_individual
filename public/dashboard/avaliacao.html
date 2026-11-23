@@ -146,12 +146,12 @@
 <script>
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
-    function verificar(){
+    // function verificar(){
 
-        if(nota == true){
+    //     if(nota == true){
             
-        }
-    }
+    //     }
+    // }
 
     function enviar() {
         let nota = select_nota.value;
@@ -168,9 +168,6 @@
         if (nota == "" || aspecto == "" || tema == "" || conhecia == "") {
             alert("Preencha todos os campos!")
         } else {
-            confirm("Tem certeza que quer enviar essa avaliação? Você tem direito a apenas uma tentativa")
-            } if (confirm == true) {
-            
             console.log("Payload avaliacao:", {
                 notafinalServer: notafinalVar,
                 aspectoServer: aspectoVar,
@@ -193,9 +190,7 @@
                     userIDServer: userIDVar
                 }),
             })
-            } else if(confirm == false) {
-                alert("Tentativa cancelada")
-            }
-            verificar()
+            } 
+            // verificar()
     }
 </script>

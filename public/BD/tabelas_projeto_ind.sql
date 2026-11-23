@@ -153,6 +153,13 @@ VALUES
     '123456',
     'padrao',
     'colossal'
+),
+(
+    'pedro',
+    'pedro@email.com',
+    '123456',
+    'padrao',
+    'colossal'
 );
 
 
