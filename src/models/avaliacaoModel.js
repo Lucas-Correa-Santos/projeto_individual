@@ -34,7 +34,7 @@ function respostasCertas() {
     FROM quiz q
     INNER JOIN usuario u ON q.fk_usuario = u.id
     GROUP BY u.username
-    ORDER BY Respostas_Certas DESC, u.username ASC
+    ORDER BY Respostas_Certas DESC, u.username DESC
     LIMIT 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -76,7 +76,7 @@ function tiposTitas() {
         COUNT(*) AS quantidade
     FROM usuario
     GROUP BY tipo_tita
-    ORDER BY quantidade DESC;
+    ORDER BY quantidade ASC;
     `;
     console.log("Executando a instrução SQL (tiposTitas): \n" + instrucao);
     return database.executar(instrucao);
@@ -91,6 +91,15 @@ function cadastrar(id_user, aspecto_favorito, tema_favorito, nota_final, conhece
     return database.executar(instrucao);
 }
 
+function verificar(id_user) {
+    var instrucao = `
+        SELECT id FROM avaliacao
+        WHERE fk_usuario = ${id_user};
+    `;
+
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     notaAnime,
@@ -98,5 +107,6 @@ module.exports = {
     mediaAvaliacoes,
     tentativasUser,
     temaFavorito,
-    tiposTitas
+    tiposTitas,
+    verificar
 };

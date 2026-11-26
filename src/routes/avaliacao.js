@@ -8,6 +8,11 @@ router.post("/cadastrar", function (req, res) {
     avaliacaoController.cadastrar(req, res);
 });
 
+router.get("/verificar/:idUsuario", function (req, res) {
+    // função a ser chamada quando acessar /avaliacao/verificar
+    avaliacaoController.verificar(req, res);
+});
+
 router.get("/grafico/notaAnime", function (req, res) {
     // função a ser chamada quando acessar /avaliacao/listar
     avaliacaoController.notaAnime(req, res);

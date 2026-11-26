@@ -21,7 +21,7 @@
 
 <!-- <body onload="validarSessao(), atualizarFeed()" style="background-color: var(--cor-fundo);"> -->
 
-<body onload="atualizarFeed()" style="background-color: var(--cor-fundo);"></body>
+<body onload="verificarAvaliacao()" style="background-color: var(--cor-fundo);"></body>
 <div class="janela">
 
 
@@ -96,7 +96,7 @@
                         <option value="historia">História</option>
                         <option value="personagens">Personagens</option>
                         <option value="animacao">Animação</option>
-                        <option value="trilha_sonora">Trilha sonora</option>
+                        <option value="trilha-sonora">Trilha sonora</option>
                         <option value="batalhas">Batalhas</option>
                         <option value="misterios">Mistérios</option>
                         <option value="reflexoes">Reflexões e mensagens</option>
@@ -139,19 +139,34 @@
         </div>
 
     </div>
-    </body>
-
-</html>
+    
+    </html>
+</body>
 
 <script>
+
     b_usuario.innerHTML = sessionStorage.USERNAME_USUARIO;
 
-    // function verificar(){
 
-    //     if(nota == true){
-            
-    //     }
-    // }
+function verificarAvaliacao() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/avaliacao/verificar/${idUsuario}`)
+        .then(resposta => resposta.json())
+        .then(resultado => {
+
+            if (resultado.jaAvaliou) {
+                alert("Você já realizou sua avaliação! Redirecionando para o dashboard");
+                setTimeout(() => {
+            window.location = "dashboard.html";
+            }, "500");
+            }
+
+        })
+        .catch(erro => {
+            console.log('Erro ao verificar avaliação:', erro);
+        });
+}
 
     function enviar() {
         let nota = select_nota.value;
@@ -166,8 +181,12 @@
         var userIDVar = sessionStorage.ID_USUARIO;
 
         if (nota == "" || aspecto == "" || tema == "" || conhecia == "") {
-            alert("Preencha todos os campos!")
-        } else {
+        alert("Preencha todos os campos!");
+    } else {
+
+        let confirmacao = confirm("Tem certeza que deseja enviar sua avaliação?");
+
+        if (confirmacao) {
             console.log("Payload avaliacao:", {
                 notafinalServer: notafinalVar,
                 aspectoServer: aspectoVar,
@@ -191,6 +210,6 @@
                 }),
             })
             } 
-            // verificar()
     }
+}
 </script>

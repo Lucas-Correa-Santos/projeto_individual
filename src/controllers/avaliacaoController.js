@@ -64,6 +64,30 @@ function mediaAvaliacoes(req, res){
 
 }
 
+function verificar(req, res) {
+    var id_user = req.params.idUsuario;
+
+    if (!id_user) {
+        return res.status(400).json({ erro: "ID do usuário ausente" });
+    }
+
+    id_user = parseInt(id_user);
+
+    avaliacaoModel.verificar(id_user)
+        .then(function (resultado) {
+
+            if (resultado.length > 0) {
+                res.json({ jaAvaliou: true });
+            } else {
+                res.json({ jaAvaliou: false });
+            }
+
+        })
+        .catch(function (erro) {
+            console.log("Erro ao verificar avaliação:", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 function cadastrar(req, res) {
     var id_user = req.body.userIDServer;
@@ -101,5 +125,6 @@ module.exports = {
     mediaAvaliacoes,
     tentativasUser,
     temaFavorito,
-    cadastrar
+    cadastrar,
+    verificar
 }
